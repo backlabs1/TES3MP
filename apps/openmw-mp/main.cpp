@@ -9,7 +9,6 @@
 #include <components/settings/settings.hpp>
 #include <components/version/version.hpp>
 
-#include <components/openmw-mp/ErrorMessages.hpp>
 #include <components/openmw-mp/TimedLog.hpp>
 #include <components/openmw-mp/NetworkMessages.hpp>
 #include <components/openmw-mp/Utils.hpp>

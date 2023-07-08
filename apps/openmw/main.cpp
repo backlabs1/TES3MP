@@ -36,7 +36,6 @@
 
     Include additional headers for multiplayer purposes
 */
-#include <components/openmw-mp/ErrorMessages.hpp>
 #include <components/openmw-mp/TimedLog.hpp>
 #include <components/openmw-mp/Utils.hpp>
 #include <components/openmw-mp/Version.hpp>
