@@ -89,7 +89,7 @@ void RestServer::start()
                 ss << "}";
                 ResponseStr(*response, ss.str(), "application/json");
             }
-            catch(out_of_range e)
+            catch(const out_of_range &e)
             {
                 *response << response400;
             }
