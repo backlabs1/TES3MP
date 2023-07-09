@@ -30,12 +30,33 @@ inline void ptreeToServer(boost::property_tree::ptree &pt, MasterServer::SServer
     server.SetMaxPlayers(pt.get<unsigned>("max_players"));
 }
 
+inline std::string escapeString(const std::string &str)
+{
+    const std::string escapeChars = "\"\\/\b\f\n\r\t";
+    const std::string escapeSequences = "\"\\/\b\f\n\r\t";
+
+    std::stringstream ss;
+    for (char c : str)
+    {
+        size_t found = escapeChars.find(c);
+        if (found != std::string::npos)
+        {
+            ss << '\\' << escapeSequences[found];
+        }
+        else
+        {
+            ss << c;
+        }
+    }
+    return ss.str();
+}
+
 inline void queryToStringStream(stringstream &ss, string addr, MasterServer::SServer &query)
 {
-    ss <<"\"" << addr << "\":{";
-    ss << "\"modname\": \"" << query.GetGameMode() << "\"" << ", ";
+    ss << "\"" << addr << "\":{";
+    ss << "\"modname\": \"" << escapeString(query.GetGameMode()) << "\", ";
     ss << "\"passw\": " << (query.GetPassword() ? "true" : "false") << ", ";
-    ss << "\"hostname\": \"" << query.GetName() << "\"" << ", ";
+    ss << "\"hostname\": \"" << escapeString(query.GetName()) << "\", ";
     ss << "\"query_port\": " << 0 << ", ";
     ss << "\"last_update\": " << duration_cast<seconds>(steady_clock::now() - query.lastUpdate).count() << ", ";
     ss << "\"players\": " << query.GetPlayers() << ", ";
