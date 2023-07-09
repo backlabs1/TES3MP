@@ -117,67 +117,6 @@ void RestServer::start()
         }
     };
 
-    //Add query for < 0.6 servers
-    httpServer.resource[ServersRegex]["POST"] = [this](auto response, auto request) {
-        try
-        {
-            ptree pt;
-            read_json(request->content, pt);
-
-            MasterServer::SServer server;
-            ptreeToServer(pt, server);
-
-            unsigned short port = pt.get<unsigned short>("port");
-            server.lastUpdate = steady_clock::now();
-            serverMap->insert({RakNet::SystemAddress(request->remote_endpoint_address.c_str(), port), server});
-            updatedCache = true;
-
-            *response << response201;
-        }
-        catch (exception& e)
-        {
-            cout << e.what() << endl;
-            *response << response400;
-        }
-    };
-
-    //Update query for < 0.6 servers
-    httpServer.resource[ServersRegex]["PUT"] = [this](auto response, auto request) {
-        auto addr = request->path_match[1].str();
-        auto port = (unsigned short)stoi(&(addr[addr.find(':')+1]));
-
-        auto query = serverMap->find(RakNet::SystemAddress(request->remote_endpoint_address.c_str(), port));
-
-        if (query == serverMap->end())
-        {
-            cout << request->remote_endpoint_address + ": Trying to update a non-existent server or without permissions." << endl;
-            *response << response400;
-            return;
-        }
-
-        if (request->content.size() != 0)
-        {
-            try
-            {
-                ptree pt;
-                read_json(request->content, pt);
-
-                ptreeToServer(pt, query->second);
-
-                updatedCache = true;
-            }
-            catch(exception &e)
-            {
-                cout << e.what() << endl;
-                *response << response400;
-            }
-        }
-
-        query->second.lastUpdate = steady_clock::now();
-
-        *response << response202;
-    };
-
     httpServer.resource["/api/servers/info"]["GET"] = [this](auto response, auto /*request*/) {
         stringstream ss;
         ss << '{';
