@@ -33,7 +33,6 @@ inline void ptreeToServer(boost::property_tree::ptree &pt, MasterServer::SServer
 inline std::string escapeString(const std::string &str)
 {
     const std::string escapeChars = "\"\\/\b\f\n\r\t";
-    const std::string escapeSequences = "\"\\/\b\f\n\r\t";
 
     std::stringstream ss;
     for (char c : str)
@@ -41,7 +40,7 @@ inline std::string escapeString(const std::string &str)
         size_t found = escapeChars.find(c);
         if (found != std::string::npos)
         {
-            ss << '\\' << escapeSequences[found];
+            ss << '\\' << escapeChars[found];
         }
         else
         {
