@@ -197,6 +197,14 @@ int main(int argc, char *argv[])
     std::string dataDirectory = Utils::convertPath(pluginHome + "/data");
 
     std::vector<std::string> plugins(Utils::split(mgr.getString("plugins", "Plugins"), ','));
+    // Remove spaces if they exist at the start of the plugin.
+    for (std::string& plugin : plugins) 
+    {
+        size_t spacePos = plugin.find_first_not_of(' ');
+        if (spacePos != std::string::npos && spacePos > 0) {
+            plugin.erase(0, spacePos);
+        }
+    }
 
     std::string versionInfo = Utils::getVersionInfo("TES3MP dedicated server", TES3MP_VERSION, version.mCommitHash, TES3MP_PROTO_VERSION);
     LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "%s", versionInfo.c_str());
