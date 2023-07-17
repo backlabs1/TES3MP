@@ -13,7 +13,7 @@ bool run = true;
 
 int main()
 {
-    masterServer.reset(new MasterServer(2000, 25560));
+    masterServer.reset(new MasterServer(2000, 25561));
     restServer.reset(new RestServer(8080, masterServer->GetServers()));
 
     auto onExit = [](int /*sig*/){
