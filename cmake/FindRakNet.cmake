@@ -16,6 +16,8 @@ FIND_LIBRARY (RakNet_LIBRARY_RELEASE NAMES RakNetLibStatic
     /usr/local/lib
     /opt/local/lib
     $ENV{RAKNET_ROOT}/lib
+    $ENV{RAKNET_ROOT}/build/lib/Release
+    ${RAKNET_ROOT}/build/lib/Release
     )
 	
 FIND_LIBRARY (RakNet_LIBRARY_DEBUG NAMES RakNetLibStaticd
@@ -28,6 +30,8 @@ FIND_LIBRARY (RakNet_LIBRARY_DEBUG NAMES RakNetLibStaticd
     /usr/local/lib
     /opt/local/lib
     $ENV{RAKNET_ROOT}/lib
+    $ENV{RAKNET_ROOT}/build/lib/Debug
+    ${RAKNET_ROOT}/build/lib/Debug
     )	
 	
 	
@@ -37,7 +41,8 @@ FIND_PATH (RakNet_INCLUDES raknet/RakPeer.h
     /usr/include
     /usr/local/include
     /opt/local/include
-	$ENV{RAKNET_ROOT}/include
+	  $ENV{RAKNET_ROOT}/include
+    ${RAKNET_ROOT}/include
     )
  
 MESSAGE(STATUS ${RakNet_INCLUDES})

@@ -72,7 +72,6 @@ PDBS=""
 PLATFORM=""
 CONFIGURATIONS=()
 TEST_FRAMEWORK=""
-GOOGLE_INSTALL_ROOT=""
 INSTALL_PREFIX="."
 BUILD_BENCHMARKS=""
 OSG_MULTIVIEW_BUILD=""
@@ -1147,7 +1146,26 @@ fi
 if [ -n "${TEST_FRAMEWORK}" ]; then
 	add_cmake_opts -DBUILD_UNITTESTS=ON
 	add_cmake_opts -DBUILD_OPENCS_TESTS=ON
+
+	# Saint Addition:
+	GOOGLETEST_DIR="${DEPS}/googletest"
+	add_cmake_opts -DGTEST_ROOT="${GOOGLETEST_DIR}/googletest"
+	add_cmake_opts -DGMOCK_ROOT="${GOOGLETEST_DIR}/googlemock"
+	add_cmake_opts -DGTEST_LIBRARY="${GOOGLETEST_DIR}/build/lib/Release/gtest.lib"
+	add_cmake_opts -DGTEST_MAIN_LIBRARY="${GOOGLETEST_DIR}/build/lib/Release//gtest_main.lib"
+	add_cmake_opts -DGMOCK_LIBRARY="${GOOGLETEST_DIR}/build/lib/Release/gmock.lib"
+	add_cmake_opts -DGMOCK_MAIN_LIBRARY="${GOOGLETEST_DIR}/build/lib/Release/gmock_main.lib"
+	add_cmake_opts -DGTEST_LIBRARY_DEBUG="${GOOGLETEST_DIR}/build/lib/Debug/gtest.lib"
+	add_cmake_opts -DGTEST_MAIN_LIBRARY_DEBUG="${GOOGLETEST_DIR}/build/lib/Debug/gtest_main.lib"
+	add_cmake_opts -DGMOCK_LIBRARY_DEBUG="${GOOGLETEST_DIR}/build/lib/Debug/gmock.lib"
+	add_cmake_opts -DGMOCK_MAIN_LIBRARY_DEBUG="${GOOGLETEST_DIR}/build/lib/Debug/gmock_main.lib"
 fi
+
+# Saint Addition:
+# assume a symlink for googletest and raknet
+RAKNET_ROOT="${DEPS}/raknet"
+add_cmake_opts -DRAKNET_ROOT="$RAKNET_ROOT"
+export RAKNET_ROOT
 
 if [ -n "$ACTIVATE_MSVC" ]; then
 	echo -n "- Activating MSVC in the current shell... "
