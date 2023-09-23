@@ -1,0 +1,81 @@
+name: CMake
+
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+  GIT_TERMINAL_PROMPT: 0
+
+jobs:
+  Ubuntu:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add OpenMW PPA Dependencies
+        run: sudo add-apt-repository ppa:openmw/openmw; sudo apt-get update
+
+      - name: Install Building Dependencies
+        run: sudo CI/install_debian_deps.sh gcc openmw-deps openmw-deps-dynamic
+
+      - name: Build Raknet
+        run: sudo CI/build_raknet.sh
+
+      - name: Prime ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}
+          max-size: 1000M
+
+      - name: Configure
+        run: cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DBUILD_UNITTESTS=1 -DCMAKE_INSTALL_PREFIX=install -DBUILD_OPENCS=OFF -DBUILD_ESMTOOL=OFF -DBUILD_BSATOOL=OFF -DBUILD_NIFTEST=OFF -DBUILD_ESSIMPORTER=OFF -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_FLAGS=\"-std=c++14\" -DDESIRED_QT_VERSION=5 -DRakNet_INCLUDES=raknet/include -DRakNet_LIBRARY_DEBUG=raknet/lib/libRakNetLibStatic.a -DRakNet_LIBRARY_RELEASE=raknet/lib/libRakNetLibStatic.a
+
+      - name: Build
+        run: make -j$(nproc)
+
+      - name: Test
+        run: ./openmw_test_suite
+
+      - name: Install
+        shell: bash
+        run: cmake --install .
+
+      - name: Create Artifact
+        shell: bash
+        run: sudo CI/make_package.sh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          path: tes3mp-build
+          name: tes3mp_linux
+
+  # MacOS:
+  #   runs-on: macos-latest
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+
+  #     - name: Install Building Dependencies
+  #       run: CI/before_install.osx.sh
+
+  #     - name: Prime ccache
+  #       uses: hendrikmuhs/ccache-action@v1
+  #       with:
+  #         key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}
+  #         max-size: 1000M
+
+  #     - name: Configure
+  #       run: |
+  #         rm -fr build  # remove the build directory
+  #         CI/before_script.osx.sh
+  #     - name: Build
+  #       run: |
+  #         cd build
+  #         make -j $(sysctl -n hw.logicalcpu) package
