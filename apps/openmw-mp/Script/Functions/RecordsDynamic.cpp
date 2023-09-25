@@ -746,8 +746,6 @@ void RecordsDynamicFunctions::SetRecordAutoCalc(int autoCalc) noexcept
 
     if (writeRecordsType == mwmp::RECORD_TYPE::POTION)
         tempPotion.data.mData.mAutoCalc = autoCalc;
-    else if (writeRecordsType == mwmp::RECORD_TYPE::ENCHANTMENT)
-        tempEnchantment.data.mData.mAutocalc = autoCalc;
     else if (writeRecordsType == mwmp::RECORD_TYPE::NPC)
     {
         Utils::setFlag(tempNpc.data.mFlags, ESM::NPC::Autocalc, autoCalc);
