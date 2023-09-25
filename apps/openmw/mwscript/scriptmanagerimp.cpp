@@ -80,6 +80,18 @@ namespace MWScript
             {
                 std::vector<Interpreter::Type_Code> code;
                 mParser.getCode(code);
+
+
+                /*
+                 * Dreamweave addition:
+                 * Properly recompile scripts if an existing one has already been sent.
+                 * C++20 allows a better way to do this, but alas, .contains is not available
+                 */
+                ScriptCollection::iterator iter = mScripts.find (name);
+
+                if (iter != mScripts.end())
+                    mScripts.erase(name);
+
                 mScripts.emplace(name, CompiledScript(code, mParser.getLocals()));
 
                 return true;

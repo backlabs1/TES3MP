@@ -2,6 +2,7 @@
 
 #include "../mwworld/cellstore.hpp"
 #include "../mwworld/worldimp.hpp"
+#include "../mwscript/scriptmanagerimp.hpp"
 
 #include "RecordHelper.hpp"
 #include "Main.hpp"
@@ -1323,13 +1324,14 @@ void RecordHelper::overrideRecord(const mwmp::ScriptRecord& record)
     }
 
     MWBase::World *world = MWBase::Environment::get().getWorld();
+    MWBase::ScriptManager *scriptMan = MWBase::Environment::get().getScriptManager();
 
-    if (record.baseId.empty())
-    {
+    if (record.baseId.empty()) {
         world->getModifiableStore().overrideRecord(recordData);
+        scriptMan->compile(recordData.mId);
     }
-    else if (doesRecordIdExist<ESM::Script>(record.baseId))
-    {
+    else if (doesRecordIdExist<ESM::Script>(record.baseId)) {
+
         const ESM::Script *baseData = world->getStore().get<ESM::Script>().search(record.baseId);
         ESM::Script finalData = *baseData;
         finalData.mId = recordData.mId;
@@ -1338,9 +1340,9 @@ void RecordHelper::overrideRecord(const mwmp::ScriptRecord& record)
             finalData.mScriptText = recordData.mScriptText;
 
         world->getModifiableStore().overrideRecord(finalData);
+        scriptMan->compile(recordData.mId);
     }
-    else
-    {
+    else {
         LOG_APPEND(TimedLog::LOG_INFO, "-- Ignoring record override with invalid baseId %s", record.baseId.c_str());
         return;
     }
