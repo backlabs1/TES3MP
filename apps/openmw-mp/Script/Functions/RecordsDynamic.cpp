@@ -8,7 +8,9 @@
 #include <fstream>
 
 #include "RecordsDynamic.hpp"
+#include "Utils.hpp"
 
+using namespace std;
 using namespace mwmp;
 
 SpellRecord tempSpell;
@@ -744,18 +746,15 @@ void RecordsDynamicFunctions::SetRecordAutoCalc(int autoCalc) noexcept
 
     if (writeRecordsType == mwmp::RECORD_TYPE::POTION)
         tempPotion.data.mData.mAutoCalc = autoCalc;
+    else if (writeRecordsType == mwmp::RECORD_TYPE::ENCHANTMENT)
+        tempEnchantment.data.mData.mAutocalc = autoCalc;
     else if (writeRecordsType == mwmp::RECORD_TYPE::NPC)
     {
+        Utils::setFlag(tempNpc.data.mFlags, ESM::NPC::Autocalc, autoCalc);
         if (autoCalc)
-        {
-            tempNpc.data.mFlags |= ESM::NPC::Autocalc;
             tempNpc.data.mNpdtType = ESM::NPC::NPC_WITH_AUTOCALCULATED_STATS;
-        }
         else
-        {
-            tempNpc.data.mFlags &= ~ESM::NPC::Autocalc;
             tempNpc.data.mNpdtType = ESM::NPC::NPC_DEFAULT;
-        }
     }
     else
     {
@@ -1601,6 +1600,151 @@ void RecordsDynamicFunctions::SetRecordStringVariable(const char* stringVar) noe
         LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set string variable for record type %i which lacks that property", writeRecordsType);
         return;
     }
+}
+
+void RecordsDynamicFunctions::SetRecordHasAmbient(bool hasAmbi) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        tempCell.data.mHasAmbi = hasAmbi;
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set has ambient for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasAmbiState = true;
+}
+
+void RecordsDynamicFunctions::SetRecordAmbientColor(unsigned int red, unsigned int green, unsigned int blue) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        tempCell.data.mAmbi.mAmbient = red + (green << 8) + (blue << 16);
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set ambient color for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasAmbientColor = true;
+}
+
+void RecordsDynamicFunctions::SetRecordSunlightColor(unsigned int red, unsigned int green, unsigned int blue) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        tempCell.data.mAmbi.mSunlight = red + (green << 8) + (blue << 16);
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set ambient color for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasSunlightColor = true;
+}
+
+void RecordsDynamicFunctions::SetRecordFog(unsigned int red, unsigned int green, unsigned int blue, double density) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        tempCell.data.mAmbi.mFog = red + (green << 8) + (blue << 16);
+        tempCell.data.mAmbi.mFogDensity = density;
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set ambient color for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasFog = true;
+}
+
+void RecordsDynamicFunctions::SetRecordHasWater(bool hasWater) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        Utils::setFlag(tempCell.data.mData.mFlags, ESM::Cell::Flags::HasWater, hasWater);
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set ambient color for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasWaterState = true;
+}
+
+void RecordsDynamicFunctions::SetRecordWaterLevel(double waterLevel) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        tempCell.data.mWater = waterLevel;
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set ambient color for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasWaterLevel = true;
+}
+
+void RecordsDynamicFunctions::SetRecordNoSleep(bool noSleep) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        Utils::setFlag(tempCell.data.mData.mFlags, ESM::Cell::Flags::NoSleep, noSleep);
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set no sleep state for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasNoSleep = true;
+}
+
+void RecordsDynamicFunctions::SetRecordQuasiEx(bool quasiEx) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        Utils::setFlag(tempCell.data.mData.mFlags, ESM::Cell::Flags::QuasiEx, quasiEx);
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set quasi exterior state for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasQuasiEx = true;
+}
+
+void RecordsDynamicFunctions::SetRecordRegion(const char* region) noexcept
+{
+    unsigned short writeRecordsType = WorldstateFunctions::writeWorldstate.recordsType;
+
+    if (writeRecordsType == mwmp::RECORD_TYPE::CELL) {
+        tempCell.data.mRegion = region;
+    }
+    else
+    {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, "Tried to set quasi exterior state for record type %i which lacks that property", writeRecordsType);
+        return;
+    }
+
+    tempOverrides.hasRegion = true;
 }
 
 void RecordsDynamicFunctions::SetRecordIdByIndex(unsigned int index, const char* id) noexcept

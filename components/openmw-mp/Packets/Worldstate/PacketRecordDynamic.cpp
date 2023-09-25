@@ -504,6 +504,27 @@ void PacketRecordDynamic::Packet(RakNet::BitStream *newBitstream, bool send)
 
             RW(record.baseId, send, true);
             RW(recordData.mName, send, true);
+            RW(recordData.mHasAmbi, send);
+            RW(recordData.mAmbi.mAmbient, send, true);
+            RW(recordData.mAmbi.mSunlight, send, true);
+            RW(recordData.mAmbi.mFog, send, true);
+            RW(recordData.mAmbi.mFogDensity, send);
+            RW(recordData.mData.mFlags, send);
+            RW(recordData.mWater, send);
+
+            if (!record.baseId.empty())
+            {
+                auto&& overrides = record.baseOverrides;
+                RW(overrides.hasAmbiState, send);
+                RW(overrides.hasAmbientColor, send);
+                RW(overrides.hasSunlightColor, send);
+                RW(overrides.hasFog, send);
+                RW(overrides.hasWaterState, send);
+                RW(overrides.hasWaterLevel, send);
+                RW(overrides.hasNoSleep, send);
+                RW(overrides.hasQuasiEx, send);
+                RW(overrides.hasRegion, send);
+            }
         }
     }
     else if (worldstate->recordsType == mwmp::RECORD_TYPE::CONTAINER)

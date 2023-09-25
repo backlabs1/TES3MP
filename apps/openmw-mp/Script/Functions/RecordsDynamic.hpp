@@ -112,6 +112,16 @@
     {"SetRecordFloatVariable",                  RecordsDynamicFunctions::SetRecordFloatVariable},\
     {"SetRecordStringVariable",                 RecordsDynamicFunctions::SetRecordStringVariable},\
     \
+    {"SetRecordHasAmbient",                     RecordsDynamicFunctions::SetRecordHasAmbient},\
+    {"SetRecordAmbientColor",                   RecordsDynamicFunctions::SetRecordAmbientColor},\
+    {"SetRecordSunlightColor",                  RecordsDynamicFunctions::SetRecordSunlightColor},\
+    {"SetRecordFog",                            RecordsDynamicFunctions::SetRecordFog},\
+    {"SetRecordHasWater",                       RecordsDynamicFunctions::SetRecordHasWater},\
+    {"SetRecordWaterLevel",                     RecordsDynamicFunctions::SetRecordWaterLevel},\
+    {"SetRecordNoSleep",                        RecordsDynamicFunctions::SetRecordNoSleep},\
+    {"SetRecordQuasiEx",                        RecordsDynamicFunctions::SetRecordQuasiEx},\
+    {"SetRecordRegion",                         RecordsDynamicFunctions::SetRecordRegion},\
+    \
     {"SetRecordIdByIndex",                      RecordsDynamicFunctions::SetRecordIdByIndex},\
     {"SetRecordEnchantmentIdByIndex",           RecordsDynamicFunctions::SetRecordEnchantmentIdByIndex},\
     \
@@ -948,6 +958,86 @@ public:
     * \return void
     */
     static void SetRecordStringVariable(const char* stringVar) noexcept;
+
+    /**
+    * \brief Set the ambient state of the temporary record stored on the server for the
+    * currently specified record type.
+    *
+    * \param bool Ambient state of the record
+    * \return void
+    */
+    static void SetRecordHasAmbient(bool hasAmbi) noexcept;
+
+    /**
+    * \brief Set the ambient color of the temporary record stored on the server for the
+    * currently specified record type.
+    *
+    * \param color Ambient color of the record
+    * \return void
+    */
+    static void SetRecordAmbientColor(unsigned int red, unsigned int green, unsigned int blue) noexcept;
+
+    /**
+    * \brief Set the sunlight color of the temporary record stored on the server for the
+    * currently specified record type.
+    *
+    * \param color Sunlight color of the record
+    * \return void
+    */
+    static void SetRecordSunlightColor(unsigned int red, unsigned int green, unsigned int blue) noexcept;
+
+    /**
+    * \brief Set the fog of the temporary record stored on the server for the
+    * currently specified record type.
+    *
+    * \param color Fog color of the record
+    * \param density Fog density of the record
+    * \return void
+    */
+    static void SetRecordFog(unsigned int red, unsigned int green, unsigned int blue, double density) noexcept;
+
+    /**
+    * \brief Set the water state of the temporary record stored on the server for the
+    * currently specified record type.
+    *
+    * \param hasWater Water state of the record
+    * \return void
+    */
+    static void SetRecordHasWater(bool hasWater) noexcept;
+
+    /**
+    * \brief Set the water level of the temporary record stored on the server for the
+    * currently specified record type.
+    *
+    * \param waterLevel waterLevel of the record
+    * \return void
+    */
+    static void SetRecordWaterLevel(double waterLevel) noexcept;
+
+    /**
+    * \brief Set whether players are allowed to sleep in the temporary record
+    * stored on the server for the currently specified record type.
+    *
+    * \param noSleep Whether players are allowed to sleep
+    * \return void
+    */
+    static void SetRecordNoSleep(bool noSleep) noexcept;
+
+    /**
+    * \brief Set whether the temporary record stored on the server for the
+    * currently specified record type is a quasi exterior.
+    * \param quasiEx Whether the record is a quasi exterior.
+    * \return void
+    */
+    static void SetRecordQuasiEx(bool quasiEx) noexcept;
+
+    /**
+    * \brief Set region of the temporary record stored on the server for the
+    * currently specified record type.
+    * \param region The region of the record
+    * \return void
+    */
+    static void SetRecordRegion(const char* region) noexcept;
 
     /**
     * \brief Set the id of the record at a certain index in the records stored on the server.

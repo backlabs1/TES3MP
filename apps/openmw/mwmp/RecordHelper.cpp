@@ -7,6 +7,7 @@
 #include "Main.hpp"
 #include "CellController.hpp"
 #include "Cell.hpp"
+#include <apps/openmw-mp/Utils.hpp>
 
 void RecordHelper::overrideRecord(const mwmp::ActivatorRecord& record)
 {
@@ -351,7 +352,7 @@ void RecordHelper::overrideRecord(const mwmp::CellRecord& record)
 
     if (record.baseId.empty())
     {
-        recordData.mData.mFlags |= ESM::Cell::Flags::Interior;
+        Utils::setFlag(recordData.mData.mFlags, ESM::Cell::Flags::Interior, true);
         recordData.mCellId.mWorldspace = Misc::StringUtils::lowerCase(recordData.mName);
 
         world->unloadCell(recordData);
@@ -364,6 +365,44 @@ void RecordHelper::overrideRecord(const mwmp::CellRecord& record)
         ESM::Cell finalData = *baseData;
         finalData.mName = recordData.mName;
         finalData.mCellId.mWorldspace = Misc::StringUtils::lowerCase(recordData.mName);
+
+        if (record.baseOverrides.hasAmbiState)
+            finalData.mHasAmbi= recordData.mHasAmbi;
+        if (record.baseOverrides.hasAmbientColor)
+            finalData.mAmbi.mAmbient = recordData.mAmbi.mAmbient;
+        if (record.baseOverrides.hasSunlightColor)
+            finalData.mAmbi.mSunlight = recordData.mAmbi.mSunlight;
+        if (record.baseOverrides.hasFog) {
+            finalData.mAmbi.mFog = recordData.mAmbi.mFog;
+            finalData.mAmbi.mFogDensity = recordData.mAmbi.mFogDensity;
+        }
+        if (record.baseOverrides.hasWaterState) {
+            Utils::setFlag(
+                finalData.mData.mFlags,
+                ESM::Cell::Flags::HasWater,
+                recordData.mData.mFlags
+            );
+        }
+        if (record.baseOverrides.hasWaterLevel) {
+            finalData.mWater = recordData.mWater;
+        }
+        if (record.baseOverrides.hasNoSleep) {
+            Utils::setFlag(
+                finalData.mData.mFlags,
+                ESM::Cell::Flags::NoSleep,
+                recordData.mData.mFlags
+            );
+        }
+        if (record.baseOverrides.hasQuasiEx) {
+            Utils::setFlag(
+                finalData.mData.mFlags,
+                ESM::Cell::Flags::QuasiEx,
+                recordData.mData.mFlags
+            );
+        }
+        if (record.baseOverrides.hasRegion) {
+            finalData.mRegion = recordData.mRegion;
+        }
 
         world->unloadCell(finalData);
         world->clearCellStore(finalData);
@@ -1111,11 +1150,7 @@ void RecordHelper::overrideRecord(const mwmp::NpcRecord& record)
         if (record.baseOverrides.hasAutoCalc)
         {
             finalData.mNpdtType = recordData.mNpdtType;
-
-            if ((recordData.mFlags & ESM::NPC::Autocalc) != 0)
-                finalData.mFlags |= ESM::NPC::Autocalc;
-            else
-                finalData.mFlags &= ~ESM::NPC::Autocalc;
+            Utils::setFlag(finalData.mFlags, ESM::NPC::Autocalc, recordData.mFlags);
         }
 
         if (!record.inventoryBaseId.empty() && doesRecordIdExist<ESM::NPC>(record.inventoryBaseId))
