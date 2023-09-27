@@ -66,6 +66,20 @@
     {"GetActorSpellsActiveCasterRefNum",       ActorFunctions::GetActorSpellsActiveCasterRefNum},\
     {"GetActorSpellsActiveCasterMpNum",        ActorFunctions::GetActorSpellsActiveCasterMpNum},\
     \
+    {"DoesActorAIHavePlayerTarget",            ActorFunctions::DoesActorAIHavePlayerTarget},\
+    {"GetActorAIAction",                       ActorFunctions::GetActorAIAction},\
+    {"GetActorAITargetPid",                    ActorFunctions::GetActorAITargetPid},\
+    {"GetActorAITargetRefNum",                 ActorFunctions::GetActorAITargetRefNum},\
+    {"GetActorAITargetMpNum",                  ActorFunctions::GetActorAITargetMpNum},\
+    {"GetActorAITargetRefId",                  ActorFunctions::GetActorAITargetRefId},\
+    {"GetActorAITargetName",                   ActorFunctions::GetActorAITargetName},\
+    {"GetActorAICoordinateX",                  ActorFunctions::GetActorAICoordinateX},\
+    {"GetActorAICoordinateY",                  ActorFunctions::GetActorAICoordinateY},\
+    {"GetActorAICoordinateZ",                  ActorFunctions::GetActorAICoordinateZ},\
+    {"GetActorAIDistance",                     ActorFunctions::GetActorAIDistance},\
+    {"GetActorAIDuration",                     ActorFunctions::GetActorAIDuration},\
+    {"GetActorAIRepetition",                   ActorFunctions::GetActorAIRepetition},\
+    \
     {"DoesActorHavePosition",                  ActorFunctions::DoesActorHavePosition},\
     {"DoesActorHaveStatsDynamic",              ActorFunctions::DoesActorHaveStatsDynamic},\
     \
@@ -584,6 +598,112 @@ public:
     * \return The mpNum of the caster.
     */
     static unsigned int GetActorSpellsActiveCasterMpNum(unsigned int actorIndex, unsigned int spellIndex) noexcept;
+
+    /**
+    * \brief Get the AI action of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The AI action.
+    */
+    static unsigned int GetActorAIAction(unsigned int index) noexcept;
+
+    /**
+    * \brief Check whether the AI target of the actor at a certain index in the read actor list is a player.
+    *
+    * \param index The index of the actor.
+    * \return Whether the actor AI targets a player.
+    */
+    static bool DoesActorAIHavePlayerTarget(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the player ID of the AI target of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The player ID of the target.
+    */
+    static int GetActorAITargetPid(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the refNum of the AI target of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The refNum of the target.
+    */
+    static unsigned int GetActorAITargetRefNum(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the mpNum of the AI target of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The mpNum of the target.
+    */
+    static unsigned int GetActorAITargetMpNum(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the refId of the AI target of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The refNum of the target.
+    */
+    static const char* GetActorAITargetRefId(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the name of the AI target of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The name of the target.
+    */
+    static const char* GetActorAITargetName(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the X position of the AI target position of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The X position.
+    */
+    static double GetActorAICoordinateX(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the Y position of the AI target position of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The Y position.
+    */
+    static double GetActorAICoordinateY(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the Z position of the AI target position of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The Z position.
+    */
+    static double GetActorAICoordinateZ(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the distance of the AI package associated with the AI action of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The distance of the package.
+    */
+    static unsigned int GetActorAIDistance(unsigned int index) noexcept;
+
+    /**
+    * \brief Get the duration of the AI package associated with the AI action of the actor at a certain index in the read actor list.
+    *
+    * \param index The index of the actor.
+    * \return The duration of the package.
+    */
+    static unsigned int GetActorAIDuration(unsigned int index) noexcept;
+
+    /**
+    * \brief Get whether the AI package associated with the AI action of the actor at a certain index in the read actor list should be repeated.
+    *
+    * Note: This only applies to the WANDER package.
+    *
+    * \param index The index of the actor.
+    * \return Whether the package should be repeated
+    */
+    static bool GetActorAIRepetition(unsigned int index) noexcept;
 
     /**
     * \brief Check whether there is any positional data for the actor at a certain index in

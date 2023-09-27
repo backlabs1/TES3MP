@@ -476,6 +476,76 @@ void ActorFunctions::SetActorAIRepetition(bool shouldRepeat) noexcept
     tempActor.aiShouldRepeat = shouldRepeat;
 }
 
+unsigned int ActorFunctions::GetActorAIAction(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiAction;
+}
+
+bool ActorFunctions::DoesActorAIHavePlayerTarget(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiTarget.isPlayer;
+}
+
+int ActorFunctions::GetActorAITargetPid(unsigned int index) noexcept
+{
+    Player* player = Players::getPlayer(readActorList->baseActors.at(index).aiTarget.guid);
+
+    if (player != nullptr)
+        return player->getId();
+
+    return -1;
+}
+
+unsigned int ActorFunctions::GetActorAITargetRefNum(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiTarget.refNum;
+}
+
+unsigned int ActorFunctions::GetActorAITargetMpNum(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiTarget.mpNum;
+}
+
+const char *ActorFunctions::GetActorAITargetRefId(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiTarget.refId.c_str();
+}
+
+const char *ActorFunctions::GetActorAITargetName(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiTarget.name.c_str();
+}
+
+double ActorFunctions::GetActorAICoordinateX(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiCoordinates.pos[0];
+}
+
+double ActorFunctions::GetActorAICoordinateY(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiCoordinates.pos[1];
+}
+
+double ActorFunctions::GetActorAICoordinateZ(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiCoordinates.pos[2];
+}
+
+unsigned int ActorFunctions::GetActorAIDistance(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiDistance;
+}
+
+unsigned int ActorFunctions::GetActorAIDuration(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiDuration;
+}
+
+bool ActorFunctions::GetActorAIRepetition(unsigned int index) noexcept
+{
+    return readActorList->baseActors.at(index).aiShouldRepeat;
+}
+
 void ActorFunctions::EquipActorItem(unsigned short slot, const char *refId, unsigned int count, int charge, double enchantmentCharge) noexcept
 {
     tempActor.equipmentItems[slot].refId = refId;
