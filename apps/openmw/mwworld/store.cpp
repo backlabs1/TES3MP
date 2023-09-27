@@ -801,30 +801,37 @@ namespace MWWorld
     */
     ESM::Cell *Store<ESM::Cell>::override(const ESM::Cell &cell)
     {
-        if (search(cell) != 0)
-        {
-            for (auto it = mSharedInt.begin(); it != mSharedInt.end(); ++it)
+        if (search(cell) == 0)
+            return insert(cell);
+
+
+        for (auto it = mSharedInt.begin(); it != mSharedInt.end(); ++it)
             {
                 if (Misc::StringUtils::ciEqual((*it)->mName, cell.mName))
-                {
-                    (*it) = &const_cast<ESM::Cell&>(cell);
-                    break;
-                }
+                    {
+                        (*it) = &const_cast<ESM::Cell&>(cell);
+                        break;
+                    }
             }
 
-            for (auto it = mInt.begin(); it != mInt.end(); ++it)
+        for (auto it = mInt.begin(); it != mInt.end(); ++it)
             {
                 if (Misc::StringUtils::ciEqual((*it).second.mName, cell.mName))
-                {
-                    (*it).second = cell;
-                    return &(*it).second;
-                }
+                    {
+                        (*it).second = cell;
+                        return &(*it).second;
+                    }
             }
-        }
-        else
-        {
-            return insert(cell);
-        }
+
+        for (auto it = mDynamicInt.begin(); it != mDynamicInt.end(); ++it)
+            {
+                if (Misc::StringUtils::ciEqual((*it).second.mName, cell.mName))
+                    {
+                        (*it).second = cell;
+                        return &(*it).second;
+                    }
+            }
+        return nullptr;
     }
     /*
         End of tes3mp addition
