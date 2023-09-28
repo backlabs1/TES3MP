@@ -95,6 +95,28 @@ namespace MWScript
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(travelPackage, ptr);
 
                     Log(Debug::Info) << "AiTravel: " << x << ", " << y << ", " << z;
+
+                    /*
+                      Start of tes3mp addition
+
+                      Send ActorAI packets when an actor becomes a follower,
+                      regardless of whether we're the cell authority or not; the
+                      server can decide if it wants to comply with them by
+                      forwarding them to the cell authority
+                    */
+                    ESM::Position position;
+                    position.pos[0] = x;
+                    position.pos[1] = y;
+                    position.pos[2] = z;
+
+                    mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                    actorList->reset();
+                    actorList->cell = *ptr.getCell()->getCell();
+                    actorList->addTravelActor(ptr, position);
+                    actorList->sendAiActors();
+                    /*
+                        End of tes3mp addition
+                    */
                 }
         };
 
