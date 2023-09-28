@@ -127,6 +127,23 @@ void ActorList::addAttackActor(const MWWorld::Ptr& actorPtr, const mwmp::Attack 
     attackActors.push_back(baseActor);
 }
 
+void ActorList::addWanderActor(const MWWorld::Ptr& actorPtr, unsigned int distance, unsigned int duration, bool repeat)
+{
+    mwmp::BaseActor baseActor;
+    baseActor.refNum = actorPtr.getCellRef().getRefNum().mIndex;
+    baseActor.mpNum = actorPtr.getCellRef().getMpNum();
+    baseActor.aiAction = mwmp::BaseActorList::WANDER;
+    baseActor.aiDuration = duration;
+    baseActor.aiDistance = distance;
+    baseActor.aiShouldRepeat = repeat;
+
+
+    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Preparing to send ID_ACTOR_AI about %s %i-%i\n- action: %i",
+                       actorPtr.getCellRef().getRefId().c_str(), baseActor.refNum, baseActor.mpNum, baseActor.aiAction);
+
+    addAiActor(baseActor);
+}
+
 void ActorList::addCastActor(BaseActor baseActor)
 {
     castActors.push_back(baseActor);

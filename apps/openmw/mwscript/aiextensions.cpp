@@ -241,6 +241,22 @@ namespace MWScript
 
                     MWMechanics::AiWander wanderPackage(range, duration, time, idleList, repeat);
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(wanderPackage, ptr);
+
+                    /*
+                      Start of tes3mp addition
+
+                      Send ActorAI packets when an actor becomes a follower, regardless of whether we're
+                      the cell authority or not; the server can decide if it wants to comply with them by
+                      forwarding them to the cell authority
+                    */
+                    mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                    actorList->reset();
+                    actorList->cell = *ptr.getCell()->getCell();
+                    actorList->addWanderActor(ptr, range, duration, repeat);
+                    actorList->sendAiActors();
+                    /*
+                        End of tes3mp addition
+                    */
                 }
         };
 
