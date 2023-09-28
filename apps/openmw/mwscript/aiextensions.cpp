@@ -67,6 +67,28 @@ namespace MWScript
                     MWMechanics::AiActivate activatePackage(objectID);
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(activatePackage, ptr);
                     Log(Debug::Info) << "AiActivate";
+
+                    /*
+                      Start of tes3mp addition
+
+                      Send ActorAI packets when an actor becomes a follower,
+                      regardless of whether we're the cell authority or not; the
+                      server can decide if it wants to comply with them by
+                      forwarding them to the cell authority
+                    */
+                    MWWorld::Ptr targetPtr = MWBase::Environment::get().getWorld()->searchPtr(objectID, true);
+
+                    if (targetPtr)
+                        {
+                            mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                            actorList->reset();
+                            actorList->cell = *ptr.getCell()->getCell();
+                            actorList->addAiActor(ptr, targetPtr, mwmp::BaseActorList::ACTIVATE);
+                            actorList->sendAiActors();
+                        }
+                    /*
+                        End of tes3mp addition
+                    */
                 }
         };
 
