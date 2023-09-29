@@ -145,6 +145,16 @@ namespace mwmp
 
         bool hasScriptText = false;
 
+        bool hasAmbiState = false;
+        bool hasAmbientColor = false;
+        bool hasSunlightColor = false;
+        bool hasFog = false;
+        bool hasWaterState = false;
+        bool hasWaterLevel = false;
+        bool hasNoSleep = false;
+        bool hasQuasiEx = false;
+        bool hasRegion = false;
+
         bool hasVolume = false;
         bool hasMinRange = false;
         bool hasMaxRange = false;
