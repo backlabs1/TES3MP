@@ -80,10 +80,18 @@ namespace MWScript
 
                     if (targetPtr)
                         {
+                            // Common Logic
                             mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                            mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                             actorList->reset();
                             actorList->cell = *ptr.getCell()->getCell();
-                            actorList->addAiActor(ptr, targetPtr, mwmp::BaseActorList::ACTIVATE);
+
+                            // Package-specific logic
+                            baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
+                            baseActor.aiAction = mwmp::BaseActorList::ACTIVATE;
+
+                            // Send it
+                            actorList->queueAiActor(baseActor);
                             actorList->sendAiActors();
                         }
                     /*
@@ -121,20 +129,26 @@ namespace MWScript
                     /*
                       Start of tes3mp addition
 
-                      Send ActorAI packets when an actor becomes a follower,
+                      Send ActorAI packets when an actor begins travelling,
                       regardless of whether we're the cell authority or not; the
                       server can decide if it wants to comply with them by
                       forwarding them to the cell authority
                     */
-                    ESM::Position position;
-                    position.pos[0] = x;
-                    position.pos[1] = y;
-                    position.pos[2] = z;
 
+                    // Common Logic
                     mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                    mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                     actorList->reset();
                     actorList->cell = *ptr.getCell()->getCell();
-                    actorList->addTravelActor(ptr, position);
+
+                    // Package-Specific logic
+                    baseActor.aiCoordinates.pos[0] = x;
+                    baseActor.aiCoordinates.pos[1] = y;
+                    baseActor.aiCoordinates.pos[2] = z;
+                    baseActor.aiAction = mwmp::BaseActorList::TRAVEL;
+
+                    // Send it
+                    actorList->queueAiActor(baseActor);
                     actorList->sendAiActors();
                     /*
                         End of tes3mp addition
@@ -289,14 +303,25 @@ namespace MWScript
                     /*
                       Start of tes3mp addition
 
-                      Send ActorAI packets when an actor becomes a follower, regardless of whether we're
+                      Send ActorAI packets when an actor starts wandering, regardless of whether we're
                       the cell authority or not; the server can decide if it wants to comply with them by
                       forwarding them to the cell authority
                     */
+
+                    // Common Logic
                     mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                    mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                     actorList->reset();
                     actorList->cell = *ptr.getCell()->getCell();
-                    actorList->addWanderActor(ptr, range, duration, repeat);
+
+                    // Package-specific logic
+                    baseActor.aiDuration = duration;
+                    baseActor.aiDistance = range;
+                    baseActor.aiShouldRepeat = repeat;
+                    baseActor.aiAction = mwmp::BaseActorList::WANDER;
+
+                    // Send it
+                    actorList->queueAiActor(baseActor);
                     actorList->sendAiActors();
                     /*
                         End of tes3mp addition
