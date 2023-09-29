@@ -91,13 +91,15 @@ void ActorList::addAiActor(BaseActor baseActor)
 void ActorList::addAiActor(const MWWorld::Ptr& actorPtr, const MWWorld::Ptr& targetPtr, unsigned int aiAction)
 {
     mwmp::BaseActor baseActor;
+    baseActor.refId  = actorPtr.getCellRef().getRefId();
     baseActor.refNum = actorPtr.getCellRef().getRefNum().mIndex;
     baseActor.mpNum = actorPtr.getCellRef().getMpNum();
+
     baseActor.aiAction = aiAction;
     baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
 
     LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Preparing to send ID_ACTOR_AI about %s %i-%i\n- action: %i",
-        actorPtr.getCellRef().getRefId().c_str(), baseActor.refNum, baseActor.mpNum, aiAction);
+                       baseActor.refId.c_str(), baseActor.refNum, baseActor.mpNum, aiAction);
 
     if (baseActor.aiTarget.isPlayer)
     {
@@ -127,39 +129,6 @@ void ActorList::addAttackActor(const MWWorld::Ptr& actorPtr, const mwmp::Attack 
     attackActors.push_back(baseActor);
 }
 
-void ActorList::addTravelActor(const MWWorld::Ptr &actorPtr, ESM::Position coordinates)
-{
-    mwmp::BaseActor baseActor;
-    baseActor.refNum = actorPtr.getCellRef().getRefNum().mIndex;
-    baseActor.mpNum = actorPtr.getCellRef().getMpNum();
-    baseActor.aiAction = mwmp::BaseActorList::TRAVEL;
-
-    baseActor.aiCoordinates = coordinates;
-
-    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Preparing to send ID_ACTOR_AI about %s %i-%i\n- action: %i",
-        actorPtr.getCellRef().getRefId().c_str(), baseActor.refNum, baseActor.mpNum, baseActor.aiAction);
-
-    addAiActor(baseActor);
-}
-
-void ActorList::addWanderActor(const MWWorld::Ptr& actorPtr, unsigned int distance, unsigned int duration, bool repeat)
-{
-    mwmp::BaseActor baseActor;
-    baseActor.refNum = actorPtr.getCellRef().getRefNum().mIndex;
-    baseActor.mpNum = actorPtr.getCellRef().getMpNum();
-    baseActor.aiAction = mwmp::BaseActorList::WANDER;
-
-    baseActor.aiDuration = duration;
-    baseActor.aiDistance = distance;
-    baseActor.aiShouldRepeat = repeat;
-
-
-    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Preparing to send ID_ACTOR_AI about %s %i-%i\n- action: %i",
-                       actorPtr.getCellRef().getRefId().c_str(), baseActor.refNum, baseActor.mpNum, baseActor.aiAction);
-
-    addAiActor(baseActor);
-}
-
 void ActorList::addCastActor(BaseActor baseActor)
 {
     castActors.push_back(baseActor);
@@ -168,6 +137,25 @@ void ActorList::addCastActor(BaseActor baseActor)
 void ActorList::addCellChangeActor(BaseActor baseActor)
 {
     cellChangeActors.push_back(baseActor);
+}
+
+void ActorList::queueAiActor(BaseActor baseActor) {
+    LOG_MESSAGE_SIMPLE(
+        TimedLog::LOG_INFO,
+        "Preparing to send ID_ACTOR_AI about %s %i-%i\n- action: %i",
+        baseActor.refId.c_str(), baseActor.refNum, baseActor.mpNum,
+        baseActor.aiAction);
+
+    if (baseActor.aiTarget.isPlayer) {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "- Has player target %s",
+                           baseActor.aiTarget.refId.c_str());
+    } else {
+        LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "- Has actor target %s %i-%i",
+                           baseActor.aiTarget.refId.c_str(),
+                           baseActor.aiTarget.refNum, baseActor.aiTarget.mpNum);
+    }
+
+    addAiActor(baseActor);
 }
 
 void ActorList::sendPositionActors()
