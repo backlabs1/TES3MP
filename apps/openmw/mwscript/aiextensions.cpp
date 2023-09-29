@@ -430,10 +430,22 @@ namespace MWScript
 
                     if (targetPtr)
                     {
+                        // Common Logic
                         mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                        mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                         actorList->reset();
                         actorList->cell = *ptr.getCell()->getCell();
-                        actorList->addAiActor(ptr, targetPtr, mwmp::BaseActorList::FOLLOW);
+
+                        // Package-specific logic
+                        baseActor.aiCoordinates.pos[0] = x;
+                        baseActor.aiCoordinates.pos[1] = y;
+                        baseActor.aiCoordinates.pos[2] = z;
+
+                        baseActor.aiAction = mwmp::BaseActorList::FOLLOW;
+                        baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
+
+                        // Send it
+                        actorList->queueAiActor(baseActor);
                         actorList->sendAiActors();
                     }
                     /*
