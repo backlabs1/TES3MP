@@ -24,7 +24,8 @@ void PacketActorAI::Actor(BaseActor &actor, bool send)
         if (actor.aiAction == mwmp::BaseActorList::ESCORT || actor.aiAction == mwmp::BaseActorList::WANDER)
             RW(actor.aiDuration, send);
 
-        if (actor.aiAction == mwmp::BaseActorList::ESCORT || actor.aiAction == mwmp::BaseActorList::TRAVEL)
+        if (actor.aiAction == mwmp::BaseActorList::ESCORT || actor.aiAction == mwmp::BaseActorList::TRAVEL ||
+            actor.aiAction == mwmp::BaseActorList::FOLLOW)
             RW(actor.aiCoordinates, send);
 
         if (actor.aiAction == mwmp::BaseActorList::ACTIVATE || actor.aiAction == mwmp::BaseActorList::COMBAT ||
