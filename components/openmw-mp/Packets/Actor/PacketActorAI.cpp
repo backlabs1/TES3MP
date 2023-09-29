@@ -46,6 +46,7 @@ void PacketActorAI::Actor(BaseActor &actor, bool send)
                     RW(actor.aiTarget.refId, send, true);
                     RW(actor.aiTarget.refNum, send);
                     RW(actor.aiTarget.mpNum, send);
+                    RW(actor.aiTarget.name, send);
                 }
             }
         }
