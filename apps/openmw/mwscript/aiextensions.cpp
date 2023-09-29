@@ -85,10 +85,10 @@ namespace MWScript
                             mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                             actorList->reset();
                             actorList->cell = *ptr.getCell()->getCell();
+                            baseActor.aiAction = mwmp::BaseActorList::ACTIVATE;
 
                             // Package-specific logic
                             baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
-                            baseActor.aiAction = mwmp::BaseActorList::ACTIVATE;
 
                             // Send it
                             actorList->queueAiActor(baseActor);
@@ -140,12 +140,12 @@ namespace MWScript
                     mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                     actorList->reset();
                     actorList->cell = *ptr.getCell()->getCell();
+                    baseActor.aiAction = mwmp::BaseActorList::TRAVEL;
 
                     // Package-Specific logic
                     baseActor.aiCoordinates.pos[0] = x;
                     baseActor.aiCoordinates.pos[1] = y;
                     baseActor.aiCoordinates.pos[2] = z;
-                    baseActor.aiAction = mwmp::BaseActorList::TRAVEL;
 
                     // Send it
                     actorList->queueAiActor(baseActor);
@@ -313,12 +313,12 @@ namespace MWScript
                     mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                     actorList->reset();
                     actorList->cell = *ptr.getCell()->getCell();
+                    baseActor.aiAction = mwmp::BaseActorList::WANDER;
 
                     // Package-specific logic
                     baseActor.aiDuration = duration;
                     baseActor.aiDistance = range;
                     baseActor.aiShouldRepeat = repeat;
-                    baseActor.aiAction = mwmp::BaseActorList::WANDER;
 
                     // Send it
                     actorList->queueAiActor(baseActor);
@@ -460,13 +460,12 @@ namespace MWScript
                         mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                         actorList->reset();
                         actorList->cell = *ptr.getCell()->getCell();
+                        baseActor.aiAction = mwmp::BaseActorList::FOLLOW;
 
                         // Package-specific logic
                         baseActor.aiCoordinates.pos[0] = x;
                         baseActor.aiCoordinates.pos[1] = y;
                         baseActor.aiCoordinates.pos[2] = z;
-
-                        baseActor.aiAction = mwmp::BaseActorList::FOLLOW;
                         baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
 
                         // Send it
