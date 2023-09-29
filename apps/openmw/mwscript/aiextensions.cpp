@@ -187,6 +187,39 @@ namespace MWScript
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(escortPackage, ptr);
 
                     Log(Debug::Info) << "AiEscort: " << x << ", " << y << ", " << z << ", " << duration;
+
+                    /*
+                        Start of tes3mp addition
+
+                        Send ActorAI packets when an actor begins escorting, regardless of whether we're
+                        the cell authority or not; the server can decide if it wants to comply with them by
+                        forwarding them to the cell authority
+                    */
+                    MWWorld::Ptr targetPtr = MWBase::Environment::get().getWorld()->searchPtr(actorID, true);
+
+                    if (targetPtr)
+                        {
+                            // Common Logic
+                            mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                            mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
+                            actorList->reset();
+                            actorList->cell = *ptr.getCell()->getCell();
+                            baseActor.aiAction = mwmp::BaseActorList::ESCORT;
+
+                            // Package-specific logic
+                            baseActor.aiCoordinates.pos[0] = x;
+                            baseActor.aiCoordinates.pos[1] = y;
+                            baseActor.aiCoordinates.pos[2] = z;
+                            baseActor.aiDuration = duration;
+                            baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
+
+                            // Send it
+                            actorList->queueAiActor(baseActor);
+                            actorList->sendAiActors();
+                        }
+                    /*
+                      End of tes3mp addition
+                    */
                 }
         };
 
