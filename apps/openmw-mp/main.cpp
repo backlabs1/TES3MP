@@ -206,9 +206,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    std::string versionInfo = Utils::getVersionInfo("Dreamweave dedicated server", DREAMWEAVE_VERSION, version.mCommitHash, TES3MP_PROTO_VERSION);
+    std::string versionInfo = Utils::getVersionInfo("Dreamweave dedicated server", DREAMWEAVE_VERSION, version.mCommitHash, TES3MP_PROTO_VERSION, TES3MP_VERSION);
     LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "%s", versionInfo.c_str());
-    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Based on TES3MP %s", TES3MP_VERSION);
     
     Script::SetModDir(dataDirectory);
 

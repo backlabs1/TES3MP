@@ -194,8 +194,7 @@ bool parseOptions (int argc, char** argv, OMW::Engine& engine, Files::Configurat
     Version::Version v = Version::getOpenmwVersion(variables["resources"].as<Files::EscapePath>().mPath.string());
 
     // Dreamweave: Replaced TES3MP's initial version logging to reference Dreamweave, TES3MP and OpenMW 
-    Log(Debug::Info) << Utils::getVersionInfo("Dreamweave client", DREAMWEAVE_VERSION, v.mCommitHash, TES3MP_PROTO_VERSION);
-    Log(Debug::Info) << "Based on TES3MP version " << TES3MP_VERSION;
+    Log(Debug::Info) << Utils::getVersionInfo("Dreamweave client", DREAMWEAVE_VERSION, v.mCommitHash, TES3MP_PROTO_VERSION, TES3MP_VERSION);
     Log(Debug::Info) << "OpenMW version " << v.mVersion;
 
     engine.setGrabMouse(!variables["no-grab"].as<bool>());
