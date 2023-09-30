@@ -79,8 +79,8 @@ std::string loadSettings (Settings::Manager & settings)
 {
     Files::ConfigurationManager mCfgMgr;
     // Create the settings manager and load default settings file
-    const std::string localdefault = (mCfgMgr.getLocalPath() / "tes3mp-server-default.cfg").string();
-    const std::string globaldefault = (mCfgMgr.getGlobalPath() / "tes3mp-server-default.cfg").string();
+    const std::string localdefault = (mCfgMgr.getLocalPath() / "dreamweave-server-default.cfg").string();
+    const std::string globaldefault = (mCfgMgr.getGlobalPath() / "dreamweave-server-default.cfg").string();
 
     // prefer local
     if (boost::filesystem::exists(localdefault))
@@ -88,10 +88,10 @@ std::string loadSettings (Settings::Manager & settings)
     else if (boost::filesystem::exists(globaldefault))
         settings.loadDefault(globaldefault, false);
     else
-        throw std::runtime_error ("No default settings file found! Make sure the file \"tes3mp-server-default.cfg\" was properly installed.");
+        throw std::runtime_error ("No default settings file found! Make sure the file \"dreamweave-server-default.cfg\" was properly installed.");
 
     // load user settings if they exist
-    const std::string settingspath = (mCfgMgr.getUserConfigPath() / "tes3mp-server.cfg").string();
+    const std::string settingspath = (mCfgMgr.getUserConfigPath() / "dreamweave-server.cfg").string();
     if (boost::filesystem::exists(settingspath))
         settings.loadUser(settingspath);
 
@@ -206,8 +206,9 @@ int main(int argc, char *argv[])
         }
     }
 
-    std::string versionInfo = Utils::getVersionInfo("TES3MP dedicated server", TES3MP_VERSION, version.mCommitHash, TES3MP_PROTO_VERSION);
+    std::string versionInfo = Utils::getVersionInfo("Dreamweave dedicated server", DREAMWEAVE_VERSION, version.mCommitHash, TES3MP_PROTO_VERSION);
     LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "%s", versionInfo.c_str());
+    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Based on TES3MP %s", TES3MP_VERSION);
     
     Script::SetModDir(dataDirectory);
 

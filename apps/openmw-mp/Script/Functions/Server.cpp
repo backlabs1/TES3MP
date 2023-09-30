@@ -96,7 +96,8 @@ const char *ServerFunctions::GetArchitectureType() noexcept
 
 const char *ServerFunctions::GetServerVersion() noexcept
 {
-    return TES3MP_VERSION;
+    // Dreamweave: TODO: Map TES3MP to another function, so we can check what version of TES3MP we're based off.
+    return DREAMWEAVE_VERSION;
 }
 
 const char *ServerFunctions::GetProtocolVersion() noexcept

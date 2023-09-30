@@ -63,8 +63,8 @@ std::string loadSettings(Settings::Manager& settings)
 {
     Files::ConfigurationManager mCfgMgr;
     // Create the settings manager and load default settings file
-    const std::string localdefault = (mCfgMgr.getLocalPath() / "tes3mp-client-default.cfg").string();
-    const std::string globaldefault = (mCfgMgr.getGlobalPath() / "tes3mp-client-default.cfg").string();
+    const std::string localdefault = (mCfgMgr.getLocalPath() / "dreamweave-client-default.cfg").string();
+    const std::string globaldefault = (mCfgMgr.getGlobalPath() / "dreamweave-client-default.cfg").string();
 
     // prefer local
     if (boost::filesystem::exists(localdefault))
@@ -72,10 +72,10 @@ std::string loadSettings(Settings::Manager& settings)
     else if (boost::filesystem::exists(globaldefault))
         settings.loadDefault(globaldefault, false);
     else
-        throw std::runtime_error ("No default settings file found! Make sure the file \"tes3mp-client-default.cfg\" was properly installed.");
+        throw std::runtime_error ("No default settings file found! Make sure the file \"dreamweave-client-default.cfg\" was properly installed.");
 
     // load user settings if they exist
-    const std::string settingspath = (mCfgMgr.getUserConfigPath() / "tes3mp-client.cfg").string();
+    const std::string settingspath = (mCfgMgr.getUserConfigPath() / "dreamweave-client.cfg").string();
     if (boost::filesystem::exists(settingspath))
         settings.loadUser(settingspath);
 
@@ -84,20 +84,17 @@ std::string loadSettings(Settings::Manager& settings)
 
 Main::Main()
 {
-    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "tes3mp started");
+    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Dreamweave started");
     mNetworking = new Networking();
     mLocalSystem = new LocalSystem();
     mLocalPlayer = new LocalPlayer();
     mGUIController = new GUIController();
     mCellController = new CellController();
-
-    server = "mp.tes3mp.com";
-    port = 25565;
 }
 
 Main::~Main()
 {
-    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "tes3mp stopped");
+    LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "Dreamweave stopped");
     delete mNetworking;
     delete mLocalSystem;
     delete mLocalPlayer;

@@ -344,7 +344,7 @@ void Networking::connect(const std::string &ip, unsigned short port, std::vector
     if (!errmsg.empty())
     {
         LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, errmsg.c_str());
-        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "tes3mp", errmsg.c_str(), 0);
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "dreamweave", errmsg.c_str(), 0);
     }
     else
         preInit(content, collections);
@@ -418,7 +418,7 @@ void Networking::preInit(std::vector<std::string> &content, Files::Collections &
 
         LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, listDiscrepancies(checksums, checksumsResponse).c_str());
         LOG_MESSAGE_SIMPLE(TimedLog::LOG_ERROR, listComparison(checksums, checksumsResponse, true).c_str());
-        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "tes3mp", errmsg.c_str(), 0);
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "dreamweave", errmsg.c_str(), 0);
         connected = false;
     }
 }
