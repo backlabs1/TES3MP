@@ -44,7 +44,7 @@ namespace MWScript
         mParser.reset();
         mErrorHandler.reset();
 
-        if (const ESM::Script *script = mStore.get<ESM::Script>().find (name))
+        if (const ESM::Script *script = mStore.get<ESM::Script>().find(name))
         {
             mErrorHandler.setContext(name);
 
@@ -87,7 +87,7 @@ namespace MWScript
                  * Properly recompile scripts if an existing one has already been sent.
                  * C++20 allows a better way to do this, but alas, .contains is not available
                  */
-                ScriptCollection::iterator iter = mScripts.find (name);
+                ScriptCollection::iterator iter = mScripts.find(name);
 
                 if (iter != mScripts.end())
                     mScripts.erase(name);
@@ -104,7 +104,7 @@ namespace MWScript
     bool ScriptManager::run (const std::string& name, Interpreter::Context& interpreterContext)
     {
         // compile script
-        ScriptCollection::iterator iter = mScripts.find (name);
+        ScriptCollection::iterator iter = mScripts.find(name);
 
         if (iter==mScripts.end())
         {
@@ -116,7 +116,7 @@ namespace MWScript
                 return false;
             }
 
-            iter = mScripts.find (name);
+            iter = mScripts.find(name);
             assert (iter!=mScripts.end());
         }
 
@@ -181,14 +181,14 @@ namespace MWScript
         std::string name2 = Misc::StringUtils::lowerCase (name);
 
         {
-            ScriptCollection::iterator iter = mScripts.find (name2);
+            ScriptCollection::iterator iter = mScripts.find(name2);
 
             if (iter!=mScripts.end())
                 return iter->second.mLocals;
         }
 
         {
-            std::map<std::string, Compiler::Locals>::iterator iter = mOtherLocals.find (name2);
+            std::map<std::string, Compiler::Locals>::iterator iter = mOtherLocals.find(name2);
 
             if (iter!=mOtherLocals.end())
                 return iter->second;
