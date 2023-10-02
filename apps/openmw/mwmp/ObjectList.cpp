@@ -448,7 +448,9 @@ void ObjectList::placeObjects(MWWorld::CellStore* cellStore)
 
                 if (baseObject.droppedByPlayer)
                 {
-                    MWBase::Environment::get().getSoundManager()->playSound3D(newPtr, newPtr.getClass().getDownSoundId(newPtr), 1.f, 1.f);
+
+                    if (cellStore->getCell() == &mwmp::Main::get().getLocalPlayer()->cell)
+                        MWBase::Environment::get().getSoundManager()->playSound3D(newPtr, newPtr.getClass().getDownSoundId(newPtr), 1.f, 1.f);
 
                     if (guid == Main::get().getLocalPlayer()->guid)
                         world->PCDropped(newPtr);
