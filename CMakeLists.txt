@@ -932,8 +932,8 @@ elseif(NOT APPLE)
         INSTALL(FILES "${OpenMW_SOURCE_DIR}/files/mygui/DejaVuFontLicense.txt" DESTINATION ".")
         INSTALL(FILES "${INSTALL_SOURCE}/defaults.bin" DESTINATION ".")
         # Start of tes3mp addition
-        INSTALL(FILES "${INSTALL_SOURCE}/tes3mp-client-default.cfg" DESTINATION ".")
-        INSTALL(FILES "${INSTALL_SOURCE}/tes3mp-server-default.cfg" DESTINATION ".")
+        INSTALL(FILES "${INSTALL_SOURCE}/dreamweave-client-default.cfg" DESTINATION ".")
+        INSTALL(FILES "${INSTALL_SOURCE}/dreamweave-server-default.cfg" DESTINATION ".")
         # End of tes3mp addition
         INSTALL(FILES "${INSTALL_SOURCE}/gamecontrollerdb.txt" DESTINATION ".")
 
@@ -1078,8 +1078,8 @@ elseif(NOT APPLE)
         INSTALL(FILES "${INSTALL_SOURCE}/gamecontrollerdb.txt" DESTINATION "${SYSCONFDIR}" COMPONENT "openmw")
 
         # Start of tes3mp addition
-        INSTALL(FILES "${INSTALL_SOURCE}/tes3mp-client-default.cfg" DESTINATION "${SYSCONFDIR}" COMPONENT "openmw")
-        INSTALL(FILES "${INSTALL_SOURCE}/tes3mp-server-default.cfg" DESTINATION "${SYSCONFDIR}" COMPONENT "openmw-mp")
+        INSTALL(FILES "${INSTALL_SOURCE}/dreamweave-client-default.cfg" DESTINATION "${SYSCONFDIR}" COMPONENT "openmw")
+        INSTALL(FILES "${INSTALL_SOURCE}/dreamweave-server-default.cfg" DESTINATION "${SYSCONFDIR}" COMPONENT "openmw-mp")
         # End of tes3mp addition
 
         IF(BUILD_OPENCS)
