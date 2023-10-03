@@ -1063,7 +1063,7 @@ elseif(NOT APPLE)
         INSTALL(FILES "${OpenMW_BINARY_DIR}/openmw.appdata.xml" DESTINATION "${DATAROOTDIR}/metainfo" COMPONENT "openmw")
         # Start of tes3mp addition
         IF(BUILD_BROWSER)
-            INSTALL(FILES "${OpenMW_BINARY_DIR}/tes3mp-browser.desktop" DESTINATION "${DATAROOTDIR}/applications" COMPONENT "browser")
+            INSTALL(FILES "${OpenMW_BINARY_DIR}/dreamweave-browser.desktop" DESTINATION "${DATAROOTDIR}/applications" COMPONENT "browser")
         ENDIF(BUILD_BROWSER)
         # End of tes3mp addition
         IF(BUILD_OPENCS)
