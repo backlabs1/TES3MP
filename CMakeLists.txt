@@ -697,19 +697,19 @@ if (WIN32)
     endforeach( OUTPUTCONFIG )
 
     if (USE_DEBUG_CONSOLE AND BUILD_OPENMW)
-      set_target_properties(tes3mp PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
-      set_target_properties(tes3mp PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
-      set_target_properties(tes3mp PROPERTIES COMPILE_DEFINITIONS $<$<CONFIG:Debug>:_CONSOLE>)
+      set_target_properties(dreamweave PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
+      set_target_properties(dreamweave PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
+      set_target_properties(dreamweave PROPERTIES COMPILE_DEFINITIONS $<$<CONFIG:Debug>:_CONSOLE>)
     elseif (BUILD_OPENMW)
       # Turn off debug console, debug output will be written to visual studio output instead
-      set_target_properties(tes3mp PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:WINDOWS")
-      set_target_properties(tes3mp PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:WINDOWS")
+      set_target_properties(dreamweave PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:WINDOWS")
+      set_target_properties(dreamweave PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:WINDOWS")
     endif()
 
     if (BUILD_OPENMW)
         # Release builds don't use the debug console
-        set_target_properties(tes3mp PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
-        set_target_properties(tes3mp PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:WINDOWS")
+        set_target_properties(dreamweave PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
+        set_target_properties(dreamweave PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:WINDOWS")
     endif()
 
     # Play a bit with the warning levels
@@ -765,7 +765,7 @@ if (WIN32)
     endif()
 
     if (BUILD_BROWSER)
-        set_target_properties(tes3mp-browser PROPERTIES COMPILE_FLAGS "${WARNINGS} ${MT_BUILD}")
+        set_target_properties(dreamweave-browser PROPERTIES COMPILE_FLAGS "${WARNINGS} ${MT_BUILD}")
     endif()
 
     if (BUILD_MWINIIMPORTER)
@@ -778,9 +778,9 @@ if (WIN32)
 
     if (BUILD_OPENMW)
         if (OPENMW_UNITY_BUILD)
-            set_target_properties(tes3mp PROPERTIES COMPILE_FLAGS "${WARNINGS} ${MT_BUILD} /bigobj")
+            set_target_properties(dreamweave PROPERTIES COMPILE_FLAGS "${WARNINGS} ${MT_BUILD} /bigobj")
         else()
-            set_target_properties(tes3mp PROPERTIES COMPILE_FLAGS "${WARNINGS} ${MT_BUILD}")
+            set_target_properties(dreamweave PROPERTIES COMPILE_FLAGS "${WARNINGS} ${MT_BUILD}")
         endif()
     endif()
 
@@ -794,8 +794,8 @@ if (WIN32)
   endif(MSVC)
 
   # TODO: At some point release builds should not use the console but rather write to a log file
-  #set_target_properties(tes3mp PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
-  #set_target_properties(tes3mp PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:WINDOWS")
+  #set_target_properties(dreamweave PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
+  #set_target_properties(dreamweave PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:WINDOWS")
 endif()
 
 # Apple bundling
@@ -952,7 +952,7 @@ elseif(NOT APPLE)
         ENDIF(BUILD_LAUNCHER)
         # Start of tes3mp addition
         IF(BUILD_BROWSER)
-            SET(CPACK_PACKAGE_EXECUTABLES "${CPACK_PACKAGE_EXECUTABLES};tes3mp-browser;tes3mp Launcher")
+            SET(CPACK_PACKAGE_EXECUTABLES "${CPACK_PACKAGE_EXECUTABLES};dreamweave-browser;dreamweave Launcher")
         ENDIF(BUILD_BROWSER)
         # End of tes3mp addition
         IF(BUILD_OPENCS)
@@ -1012,14 +1012,14 @@ elseif(NOT APPLE)
             # Start of tes3mp change (major)
             #
             # Use "tes3mp" as the target filename
-            INSTALL(PROGRAMS "$<TARGET_FILE:tes3mp>" DESTINATION "${BINDIR}" )
+            INSTALL(PROGRAMS "$<TARGET_FILE:dreamweave>" DESTINATION "${BINDIR}" )
             # End of tes3mp change (major)
         ENDIF(BUILD_OPENMW)
         # Start of tes3mp addition
         #
         # Add a setting related to building the server
         IF(BUILD_OPENMW_MP)
-            INSTALL(PROGRAMS "${INSTALL_SOURCE}/tes3mp-server" DESTINATION "${BINDIR}")
+            INSTALL(PROGRAMS "${INSTALL_SOURCE}/dreamweave-server" DESTINATION "${BINDIR}")
         ENDIF(BUILD_OPENMW_MP)
         # End of tes3mp addition
         IF(BUILD_LAUNCHER)
@@ -1029,7 +1029,7 @@ elseif(NOT APPLE)
         #
         # Add a setting related to building the server browser
         IF(BUILD_BROWSER)
-            INSTALL(PROGRAMS "${INSTALL_SOURCE}/tes3mp-browser" DESTINATION "${BINDIR}" )
+            INSTALL(PROGRAMS "${INSTALL_SOURCE}/dreamweave-browser" DESTINATION "${BINDIR}" )
         ENDIF(BUILD_BROWSER)
         # End of tes3mp addition
         IF(BUILD_BSATOOL)
