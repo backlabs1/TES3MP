@@ -117,6 +117,7 @@
     {"SetObjectPosition",                     ObjectFunctions::SetObjectPosition},\
     {"SetObjectRotation",                     ObjectFunctions::SetObjectRotation},\
     {"SetObjectSound",                        ObjectFunctions::SetObjectSound},\
+    {"SetObjectTrack",                        ObjectFunctions::SetObjectTrack},\
     \
     {"SetObjectSummonState",                  ObjectFunctions::SetObjectSummonState},\
     {"SetObjectSummonEffectId",               ObjectFunctions::SetObjectSummonEffectId},\
@@ -160,6 +161,7 @@
     {"SendObjectTrap",                        ObjectFunctions::SendObjectTrap},\
     {"SendObjectScale",                       ObjectFunctions::SendObjectScale},\
     {"SendObjectSound",                       ObjectFunctions::SendObjectSound},\
+    {"SendObjectTrack",                       ObjectFunctions::SendObjectTrack},\
     {"SendObjectState",                       ObjectFunctions::SendObjectState},\
     {"SendObjectMove",                        ObjectFunctions::SendObjectMove},\
     {"SendObjectRotate",                      ObjectFunctions::SendObjectRotate},\
@@ -1087,7 +1089,21 @@ public:
     */
     static void SetObjectRotation(double x, double y, double z) noexcept;
 
-    static void SetObjectSound(const char* soundId, double volume, double pitch) noexcept;
+    /**
+     * \brief Set the Sound of the temporary object stored on the server
+     *
+     * \param soundId Sets the refId of the sound to be played on the client
+     * \param volume Set the volume of the sound to be played on the client
+     * \param pitch Set the pitch of the sound to be played on the client
+     */
+    static void SetObjectSound(const char *soundId, double volume, double pitch) noexcept;
+
+    /**
+     * \brief Set the Sound of the temporary object stored on the server
+     *
+     * \param track Sets the track name to be played on the client
+     */
+    static void SetObjectTrack(const char *soundId) noexcept;
 
     /**
     * \brief Set the summon state of the temporary object stored on the server.
@@ -1438,6 +1454,17 @@ public:
     * \return void
     */
     static void SendObjectSound(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
+
+    /**
+    * \brief Send a Music_Play packet.
+    *
+    * \param sendToOtherPlayers Whether this packet should be sent to players other than the
+    *                           player attached to the packet (false by default).
+    * \param skipAttachedPlayer Whether the packet should skip being sent to the player attached
+    *                           to the packet (false by default).
+    * \return void
+    */
+    static void SendObjectTrack(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept;
 
     /**
     * \brief Send an ObjectState packet.

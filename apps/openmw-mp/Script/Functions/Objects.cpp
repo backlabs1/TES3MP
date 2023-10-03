@@ -561,6 +561,11 @@ void ObjectFunctions::SetObjectSound(const char* soundId, double volume, double 
     tempObject.pitch = pitch;
 }
 
+void ObjectFunctions::SetObjectTrack(const char *soundId) noexcept
+{
+    tempObject.musicFilename = soundId;
+}
+
 void ObjectFunctions::SetObjectSummonState(bool summonState) noexcept
 {
     tempObject.isSummon = summonState;
@@ -825,6 +830,16 @@ void ObjectFunctions::SendObjectScale(bool sendToOtherPlayers, bool skipAttached
 void ObjectFunctions::SendObjectSound(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept
 {
     mwmp::ObjectPacket *packet = mwmp::Networking::get().getObjectPacketController()->GetPacket(ID_OBJECT_SOUND);
+    packet->setObjectList(&writeObjectList);
+
+    if (!skipAttachedPlayer)
+        packet->Send(false);
+    if (sendToOtherPlayers)
+        packet->Send(true);
+}
+
+void ObjectFunctions::SendObjectTrack(bool sendToOtherPlayers, bool skipAttachedPlayer) noexcept {
+    mwmp::ObjectPacket *packet = mwmp::Networking::get().getObjectPacketController()->GetPacket(ID_MUSIC_PLAY);
     packet->setObjectList(&writeObjectList);
 
     if (!skipAttachedPlayer)
