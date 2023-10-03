@@ -3,8 +3,8 @@ set(GAME
     main.cpp
     engine.cpp
 
-    ${CMAKE_SOURCE_DIR}/files/tes3mp/tes3mp.rc
-    ${CMAKE_SOURCE_DIR}/files/tes3mp/tes3mp.exe.manifest
+    ${CMAKE_SOURCE_DIR}/files/dreamweave/dreamweave.rc
+    ${CMAKE_SOURCE_DIR}/files/dreamweave/dreamweave.exe.manifest
 )
 
 if (ANDROID)

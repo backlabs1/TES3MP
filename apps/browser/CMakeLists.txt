@@ -2,8 +2,8 @@
 set (CMAKE_CXX_STANDARD 14)
 
 set(BROWSER_UI
-        ${CMAKE_SOURCE_DIR}/files/tes3mp/ui/Main.ui
-        ${CMAKE_SOURCE_DIR}/files/tes3mp/ui/ServerInfo.ui
+        ${CMAKE_SOURCE_DIR}/files/dreamweave/ui/Main.ui
+        ${CMAKE_SOURCE_DIR}/files/dreamweave/ui/ServerInfo.ui
         )
 set(BROWSER
         main.cpp
@@ -17,7 +17,7 @@ set(BROWSER
         PingUpdater.cpp
         PingHelper.cpp
         QueryHelper.cpp
-        ${CMAKE_SOURCE_DIR}/files/tes3mp/browser.rc
+        ${CMAKE_SOURCE_DIR}/files/dreamweave/browser.rc
         )
 
 set(BROWSER_HEADER_MOC

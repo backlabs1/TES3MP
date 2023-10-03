@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dreamweave Server Browser
+GenericName=Server Browser
+Comment=Dreamweave Fork for TES3MP.
+Keywords=Morrowind;Multiplayer;Server Browser;TES;openmw;TES3MP
+TryExec=dreamweave-browser
+Exec=dreamweave-browser
+Icon=openmw
+Categories=Game;RolePlaying;

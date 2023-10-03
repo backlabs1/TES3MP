@@ -512,11 +512,11 @@ endif (APPLE)
 
 # Other files
 
-configure_resource_file(${OpenMW_SOURCE_DIR}/files/tes3mp/tes3mp-client-default.cfg
-    "${OpenMW_BINARY_DIR}" "tes3mp-client-default.cfg")
+configure_resource_file(${OpenMW_SOURCE_DIR}/files/dreamweave/dreamweave-client-default.cfg
+    "${OpenMW_BINARY_DIR}" "dreamweave-client-default.cfg")
 
-configure_resource_file(${OpenMW_SOURCE_DIR}/files/tes3mp/tes3mp-server-default.cfg
-    "${OpenMW_BINARY_DIR}" "tes3mp-server-default.cfg")
+configure_resource_file(${OpenMW_SOURCE_DIR}/files/dreamweave/dreamweave-server-default.cfg
+    "${OpenMW_BINARY_DIR}" "dreamweave-server-default.cfg")
 
 pack_resource_file(${OpenMW_SOURCE_DIR}/files/settings-default.cfg
     "${OpenMW_BINARY_DIR}" "defaults.bin")
@@ -549,8 +549,8 @@ if (NOT WIN32 AND NOT APPLE)
         "${OpenMW_BINARY_DIR}/org.openmw.launcher.desktop")
     configure_file(${OpenMW_SOURCE_DIR}/files/openmw.appdata.xml
         "${OpenMW_BINARY_DIR}/openmw.appdata.xml")
-    configure_file(${OpenMW_SOURCE_DIR}/files/tes3mp-browser.desktop
-	    "${OpenMW_BINARY_DIR}/tes3mp-browser.desktop")
+    configure_file(${OpenMW_SOURCE_DIR}/files/dreamweave-browser.desktop
+	    "${OpenMW_BINARY_DIR}/dreamweave-browser.desktop")
     configure_file(${OpenMW_SOURCE_DIR}/files/org.openmw.cs.desktop
         "${OpenMW_BINARY_DIR}/org.openmw.cs.desktop")
 endif()
@@ -975,8 +975,8 @@ elseif(NOT APPLE)
         SET(CPACK_NSIS_INSTALLED_ICON_NAME "openmw-launcher.exe")
         SET(CPACK_NSIS_MUI_FINISHPAGE_RUN "openmw-launcher.exe")
         # Start of tes3mp change (major)
-        SET(CPACK_NSIS_MUI_ICON "${OpenMW_SOURCE_DIR}/files/tes3mp/tes3mp.ico")
-        SET(CPACK_NSIS_MUI_UNIICON "${OpenMW_SOURCE_DIR}/files/tes3mp/tes3mp.ico")
+        SET(CPACK_NSIS_MUI_ICON "${OpenMW_SOURCE_DIR}/files/dreamweave/dreamweave.ico")
+        SET(CPACK_NSIS_MUI_UNIICON "${OpenMW_SOURCE_DIR}/files/dreamweave/dreamweave.ico")
         # End of tes3mp change (major)
         SET(CPACK_PACKAGE_ICON "${OpenMW_SOURCE_DIR}\\\\files\\\\openmw.bmp")
 

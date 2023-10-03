@@ -93,7 +93,7 @@ set(MYGUI_FILES
     DejaVuLGCSansMono.ttf
     ../launcher/images/openmw.png
     # Start of tes3mp addition
-    ../tes3mp/tes3mp_logo.png
+    ../dreamweave/dreamweave_logo.png
     # End of tes3mp addition
     OpenMWResourcePlugin.xml
     skins.xml
