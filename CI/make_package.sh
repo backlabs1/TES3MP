@@ -3,9 +3,9 @@
 set -e
 
 PACKAGE_BINARIES=( \
-                   "tes3mp" \
-                       "tes3mp-browser" \
-                       "tes3mp-server" \
+                   "dreamweave" \
+                       "dreamweave-browser" \
+                       "dreamweave-server" \
                        "openmw-launcher" \
                        "openmw-wizard" \
                        "openmw-iniimporter" \
@@ -54,13 +54,13 @@ DEFAULTS=( \
                "gamecontrollerdb.txt" \
                "dreamweave-client-default.cfg" \
                "dreamweave-server-default.cfg" \
-               "tes3mp-credits.md" \
-               "tes3mp-changelog.md" \
+               "dreamweave-credits.md" \
+               "dreamweave-changelog.md" \
                "AUTHORS.md" \
                "LICENSE" \
     )
 
-mkdir tes3mp-build tes3mp-build/lib/ && mv resources/ tes3mp-build/ && cd tes3mp-build
+mkdir dreamweave-build dreamweave-build/lib/ && mv resources/ dreamweave-build/ && cd dreamweave-build
 
 for LIB in "${LIBRARIES[@]}"; do
     find /lib /usr/lib /usr/local/lib /usr/local/lib64 /lib/x86_64-linux-gnu/ ../raknet/ -name "$LIB*" -exec cp -r --preserve=links "{}" ./lib \; 2> /dev/null || true
@@ -79,7 +79,7 @@ git clone https://github.com/DreamWeave-MP/CoreScripts.git server/
 
 
 # Create pre-launch script
-cat << 'EOF' > tes3mp-prelaunch
+cat << 'EOF' > dreamweave-prelaunch
 #!/bin/bash
 
 ARGS="$*"
@@ -89,7 +89,7 @@ TES3MP_HOME="$HOME/.config/openmw"
 # If there are config files in the home directory, load those
 # Otherwise check the package/installation directory and load those
 # Otherwise copy them to the home directory
-if [[ "$ARGS" = 'tes3mp-server' ]]; then
+if [[ "$ARGS" = 'dreamweave-server' ]]; then
     if [[ -f "$TES3MP_HOME"/dreamweave-server.cfg ]]; then
         echo -e "Loading server config from the home directory"
         LOADING_FROM_HOME=true
@@ -130,7 +130,7 @@ EOF
       WRAPPER="$BINARY"
       BINARY_RENAME="$BINARY.x86_64"
       mv "$BINARY" "$BINARY_RENAME"
-      printf "#!/bin/bash\n\nWRAPPER=\"\$(basename \$0)\"\nGAMEDIR=\"\$(dirname \$0)\"\ncd \"\$GAMEDIR\"\nif test -f ./dreamweave-prelaunch; then bash ./tes3mp-prelaunch \"\$WRAPPER\"; fi\nLD_LIBRARY_PATH=\"./lib\" ./$BINARY_RENAME \"\$@\"" > "$WRAPPER"
+      printf "#!/bin/bash\n\nWRAPPER=\"\$(basename \$0)\"\nGAMEDIR=\"\$(dirname \$0)\"\ncd \"\$GAMEDIR\"\nif test -f ./dreamweave-prelaunch; then bash ./dreamweave-prelaunch \"\$WRAPPER\"; fi\nLD_LIBRARY_PATH=\"./lib\" ./$BINARY_RENAME \"\$@\"" > "$WRAPPER"
     fi
   done
   chmod 755 *

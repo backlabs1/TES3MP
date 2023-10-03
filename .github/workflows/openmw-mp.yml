@@ -53,8 +53,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          path: tes3mp-build
-          name: tes3mp_linux
+          path: dreamweave-build
+          name: dreamweave_linux
 
   # MacOS:
   #   runs-on: macos-latest
