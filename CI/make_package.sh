@@ -54,6 +54,8 @@ DEFAULTS=( \
                "gamecontrollerdb.txt" \
                "dreamweave-client-default.cfg" \
                "dreamweave-server-default.cfg" \
+               "tes3mp-credits.md" \
+               "tes3mp-changelog.md" \
                "dreamweave-credits.md" \
                "dreamweave-changelog.md" \
                "AUTHORS.md" \
