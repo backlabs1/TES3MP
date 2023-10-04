@@ -177,12 +177,12 @@ void LangLua::LoadProgram(const char *filename)
 #else
     LuaFuctionData *functions_ = functions<sizeof(ScriptFunctions::functions) / sizeof(ScriptFunctions::functions[0])>();
 #endif
-    luabridge::Namespace tes3mp = luabridge::getGlobalNamespace(lua).beginNamespace("tes3mp");
+    luabridge::Namespace dreamweave = luabridge::getGlobalNamespace(lua).beginNamespace("dreamweave");
 
     for (unsigned i = 0; i < functions_n; i++)
-        tes3mp.addCFunction(functions_[i].name, functions_[i].func);
+        dreamweave.addCFunction(functions_[i].name, functions_[i].func);
 
-    tes3mp.endNamespace();
+    dreamweave.endNamespace();
 
     if ((err = lua_pcall(lua, 0, 0, 0)) != 0) // Run once script for load in memory.
         throw std::runtime_error("Lua script " + std::string(filename) + " error (" + std::to_string(err) + "): \"" +
