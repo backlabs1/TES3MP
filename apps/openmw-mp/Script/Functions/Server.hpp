@@ -20,6 +20,7 @@
     {"GetOperatingSystemType",          ServerFunctions::GetOperatingSystemType},\
     {"GetArchitectureType",             ServerFunctions::GetArchitectureType},\
     {"GetServerVersion",                ServerFunctions::GetServerVersion},\
+    {"GetDreamweaveVersion",            ServerFunctions::GetDreamweaveVersion},\
     {"GetProtocolVersion",              ServerFunctions::GetProtocolVersion},\
     {"GetAvgPing",                      ServerFunctions::GetAvgPing},\
     {"GetIP",                           ServerFunctions::GetIP},\
@@ -164,6 +165,13 @@ public:
     * \return The server version.
     */
     static const char *GetServerVersion() noexcept;
+
+    /**
+    * \brief Get the Dreamweave version of the server.
+    *
+    * \return The server version.
+    */
+    static const char *GetDreamweaveVersion() noexcept;
 
     /**
     * \brief Get the protocol version of the server.
