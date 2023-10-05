@@ -69,7 +69,7 @@ namespace MWScript
                     Log(Debug::Info) << "AiActivate";
 
                     /*
-                      Start of tes3mp addition
+                      Start of dreamweave addition
 
                       Send ActorAI packets when an actor becomes a follower,
                       regardless of whether we're the cell authority or not; the
@@ -95,7 +95,7 @@ namespace MWScript
                             actorList->sendAiActors();
                         }
                     /*
-                        End of tes3mp addition
+                        End of dreamweave addition
                     */
                 }
         };
@@ -127,7 +127,7 @@ namespace MWScript
                     Log(Debug::Info) << "AiTravel: " << x << ", " << y << ", " << z;
 
                     /*
-                      Start of tes3mp addition
+                      Start of dreamweave addition
 
                       Send ActorAI packets when an actor begins travelling,
                       regardless of whether we're the cell authority or not; the
@@ -151,7 +151,7 @@ namespace MWScript
                     actorList->queueAiActor(baseActor);
                     actorList->sendAiActors();
                     /*
-                        End of tes3mp addition
+                        End of dreamweave addition
                     */
                 }
         };
@@ -189,7 +189,7 @@ namespace MWScript
                     Log(Debug::Info) << "AiEscort: " << x << ", " << y << ", " << z << ", " << duration;
 
                     /*
-                        Start of tes3mp addition
+                        Start of dreamweave addition
 
                         Send ActorAI packets when an actor begins escorting, regardless of whether we're
                         the cell authority or not; the server can decide if it wants to comply with them by
@@ -218,7 +218,7 @@ namespace MWScript
                             actorList->sendAiActors();
                         }
                     /*
-                      End of tes3mp addition
+                      End of dreamweave addition
                     */
                 }
         };
@@ -334,7 +334,7 @@ namespace MWScript
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(wanderPackage, ptr);
 
                     /*
-                      Start of tes3mp addition
+                      Start of dreamweave addition
 
                       Send ActorAI packets when an actor starts wandering, regardless of whether we're
                       the cell authority or not; the server can decide if it wants to comply with them by
@@ -357,7 +357,7 @@ namespace MWScript
                     actorList->queueAiActor(baseActor);
                     actorList->sendAiActors();
                     /*
-                        End of tes3mp addition
+                        End of dreamweave addition
                     */
                 }
         };
