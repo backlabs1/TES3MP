@@ -1,37 +1,19 @@
 Dreamweave Credits
 ==============
 
-C++ programmers
+Project Contributers
 ---------------
 
-    Dave Corley - project lead, support, breaker of things (corleycomputerrepair@protonmail.ch)
-    Max Henzerling - Master of merges, build process updates
-    HotaruBlaze(Phoenix) - master server updates, modern compiler fixes
-    Vidi_Aquam - Projectile packets, server features, and various client fixes
-    YvanCwan - Dark lord of integration tests
-
-
-Deployment scripts
-------------------
-
-    Dave Corley
-
+    Dave Corley - project lead(corleycomputerrepair@protonmail.ch)
+    Max Henzerling
+    HotaruBlaze(Phoenix)
+    Vidi_Aquam
+    YvanCwan
 
 Community administrators
 ------------------------
 
     HotaruBlaze(Phoenix)
-
-
-Community moderators
---------------------
-
-
-
-Art
----
-
-
 
 Super special thanks
 --------------------
