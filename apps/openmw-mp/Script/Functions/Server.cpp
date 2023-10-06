@@ -94,11 +94,6 @@ const char *ServerFunctions::GetArchitectureType() noexcept
     return architectureType.c_str();
 }
 
-const char *ServerFunctions::GetServerVersion() noexcept
-{
-    return TES3MP_VERSION;
-}
-
 const char *ServerFunctions::GetDreamweaveVersion() noexcept
 {
     return DREAMWEAVE_VERSION;

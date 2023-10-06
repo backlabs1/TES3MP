@@ -19,7 +19,6 @@
     {"GetMillisecondsSinceServerStart", ServerFunctions::GetMillisecondsSinceServerStart},\
     {"GetOperatingSystemType",          ServerFunctions::GetOperatingSystemType},\
     {"GetArchitectureType",             ServerFunctions::GetArchitectureType},\
-    {"GetServerVersion",                ServerFunctions::GetServerVersion},\
     {"GetDreamweaveVersion",            ServerFunctions::GetDreamweaveVersion},\
     {"GetProtocolVersion",              ServerFunctions::GetProtocolVersion},\
     {"GetAvgPing",                      ServerFunctions::GetAvgPing},\
@@ -160,14 +159,7 @@ public:
     static const char *GetArchitectureType() noexcept;
 
     /**
-    * \brief Get the TES3MP version of the server.
-    *
-    * \return The server version.
-    */
-    static const char *GetServerVersion() noexcept;
-
-    /**
-    * \brief Get the Dreamweave version of the server.
+    * \brief Get the version of the server.
     *
     * \return The server version.
     */
