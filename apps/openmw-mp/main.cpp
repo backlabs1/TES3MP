@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    std::string versionInfo = Utils::getVersionInfo("Dreamweave dedicated server", DREAMWEAVE_VERSION, version.mCommitHash, TES3MP_PROTO_VERSION, TES3MP_VERSION);
+    std::string versionInfo = Utils::getVersionInfo("Dreamweave dedicated server", DREAMWEAVE_VERSION, version.mCommitHash, TES3MP_VERSION);
     LOG_MESSAGE_SIMPLE(TimedLog::LOG_INFO, "%s", versionInfo.c_str());
     
     Script::SetModDir(dataDirectory);
@@ -228,7 +228,6 @@ int main(int argc, char *argv[])
 
     std::stringstream sstr;
     sstr << TES3MP_VERSION;
-    sstr << TES3MP_PROTO_VERSION;
     // Remove carriage returns added to version file on Windows
     version.mCommitHash.erase(std::remove(version.mCommitHash.begin(), version.mCommitHash.end(), '\r'), version.mCommitHash.end());
     sstr << version.mCommitHash;

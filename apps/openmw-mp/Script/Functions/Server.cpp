@@ -103,11 +103,6 @@ const char *ServerFunctions::GetDreamweaveVersion() noexcept
 {
     return DREAMWEAVE_VERSION;
 }
-const char *ServerFunctions::GetProtocolVersion() noexcept
-{
-    static std::string version = std::to_string(TES3MP_PROTO_VERSION);
-    return version.c_str();
-}
 
 int ServerFunctions::GetAvgPing(unsigned short pid) noexcept
 {

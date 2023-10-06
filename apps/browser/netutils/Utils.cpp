@@ -68,7 +68,6 @@ ServerExtendedData getExtendedData(const char *addr, unsigned short port)
     stringstream sstr;
     // Dreamweave: use Dreamweave version instead of TES3MP
     sstr << DREAMWEAVE_VERSION;
-    sstr << TES3MP_PROTO_VERSION;
 
     std::string msg;
 
