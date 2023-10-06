@@ -205,7 +205,7 @@ std::string Utils::getArchitectureType()
 #endif
 }
 
-std::string Utils::getVersionInfo(std::string appName, std::string version, std::string commitHash, int protocol, std::string dreamweaveVersion)
+std::string Utils::getVersionInfo(std::string appName, std::string version, std::string commitHash, std::string dreamweaveVersion)
 {
     std::stringstream stream;
 
