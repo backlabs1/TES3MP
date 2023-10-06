@@ -3,8 +3,8 @@ set(GAME
     main.cpp
     engine.cpp
 
-    ${CMAKE_SOURCE_DIR}/files/tes3mp/tes3mp.rc
-    ${CMAKE_SOURCE_DIR}/files/tes3mp/tes3mp.exe.manifest
+    ${CMAKE_SOURCE_DIR}/files/dreamweave/dreamweave.rc
+    ${CMAKE_SOURCE_DIR}/files/dreamweave/dreamweave.exe.manifest
 )
 
 if (ANDROID)
@@ -151,13 +151,13 @@ add_openmw_dir (mwmp/processors/worldstate ProcessorCellReset ProcessorClientScr
 # Main executable
 
 if (NOT ANDROID)
-    openmw_add_executable(tes3mp
+    openmw_add_executable(dreamweave
         ${OPENMW_FILES}
         ${GAME} ${GAME_HEADER}
         ${APPLE_BUNDLE_RESOURCES}
     )
 else ()
-    add_library(tes3mp
+    add_library(dreamweave
         SHARED
         ${OPENMW_FILES}
         ${GAME} ${GAME_HEADER}
@@ -170,7 +170,7 @@ include_directories(
     ${FFmpeg_INCLUDE_DIRS}
 )
 
-target_link_libraries(tes3mp
+target_link_libraries(dreamweave
     # CMake's built-in OSG finder does not use pkgconfig, so we have to
     # manually ensure the order is correct for inter-library dependencies.
     # This only makes a difference with `-DOPENMW_USE_SYSTEM_OSG=ON -DOSG_STATIC=ON`.
@@ -214,30 +214,30 @@ if(OSG_STATIC)
     # We use --whole-archive because OSG plugins use registration.
     get_whole_archive_options(_opts ${_osg_plugins_static_files})
     target_link_options(openmw_osg_plugins INTERFACE ${_opts})
-    target_link_libraries(tes3mp openmw_osg_plugins)
+    target_link_libraries(dreamweave openmw_osg_plugins)
 
     if(OPENMW_USE_SYSTEM_OSG)
         # OSG plugin pkgconfig files are missing these dependencies.
         # https://github.com/openscenegraph/OpenSceneGraph/issues/1052
-        target_link_libraries(tes3mp freetype jpeg png)
+        target_link_libraries(dreamweave freetype jpeg png)
     endif()
 endif(OSG_STATIC)
 
 if (ANDROID)
-    target_link_libraries(tes3mp EGL android log z)
+    target_link_libraries(dreamweave EGL android log z)
 endif (ANDROID)
 
 if (USE_SYSTEM_TINYXML)
-    target_link_libraries(tes3mp ${TinyXML_LIBRARIES})
+    target_link_libraries(dreamweave ${TinyXML_LIBRARIES})
 endif()
 
 if (NOT UNIX)
-target_link_libraries(tes3mp ${SDL2MAIN_LIBRARY})
+target_link_libraries(dreamweave ${SDL2MAIN_LIBRARY})
 endif()
 
 # Fix for not visible pthreads functions for linker with glibc 2.15
 if (UNIX AND NOT APPLE)
-target_link_libraries(tes3mp ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(dreamweave ${CMAKE_THREAD_LIBS_INIT})
 endif()
 
 if(APPLE)
@@ -252,24 +252,24 @@ if(APPLE)
     configure_file("${OpenMW_BINARY_DIR}/openmw.cfg" ${BUNDLE_RESOURCES_DIR} COPYONLY)
     configure_file("${OpenMW_BINARY_DIR}/gamecontrollerdb.txt" ${BUNDLE_RESOURCES_DIR} COPYONLY)
 
-    add_custom_command(TARGET tes3mp
+    add_custom_command(TARGET dreamweave
         POST_BUILD
         COMMAND cp "${OpenMW_BINARY_DIR}/resources/version" "${BUNDLE_RESOURCES_DIR}/resources")
 
     find_library(COCOA_FRAMEWORK Cocoa)
     find_library(IOKIT_FRAMEWORK IOKit)
-    target_link_libraries(tes3mp ${COCOA_FRAMEWORK} ${IOKIT_FRAMEWORK})
+    target_link_libraries(dreamweave ${COCOA_FRAMEWORK} ${IOKIT_FRAMEWORK})
 
     if (FFmpeg_FOUND)
         find_library(COREVIDEO_FRAMEWORK CoreVideo)
         find_library(VDA_FRAMEWORK VideoDecodeAcceleration)
-        target_link_libraries(tes3mp z ${COREVIDEO_FRAMEWORK} ${VDA_FRAMEWORK})
+        target_link_libraries(dreamweave z ${COREVIDEO_FRAMEWORK} ${VDA_FRAMEWORK})
     endif()
 endif(APPLE)
 
 if (BUILD_WITH_CODE_COVERAGE)
   add_definitions (--coverage)
-  target_link_libraries(tes3mp gcov)
+  target_link_libraries(dreamweave gcov)
 endif()
 
 if (MSVC)
@@ -280,5 +280,5 @@ if (MSVC)
 endif (MSVC)
 
 if (WIN32)
-    INSTALL(TARGETS tes3mp RUNTIME DESTINATION ".")
+    INSTALL(TARGETS dreamweave RUNTIME DESTINATION ".")
 endif (WIN32)

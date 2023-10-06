@@ -611,8 +611,8 @@ void Launcher::MainDialog::play()
     }
 
     // Launch the game detached
-
-    if (mGameInvoker->startProcess(QLatin1String("tes3mp-browser"), true))
+    // Dreamweave: Rename from tes3mp to dreamweave 
+    if (mGameInvoker->startProcess(QLatin1String("dreamweave-browser"), true))
         return qApp->quit();
 }
 

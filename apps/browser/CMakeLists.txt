@@ -2,8 +2,8 @@
 set (CMAKE_CXX_STANDARD 14)
 
 set(BROWSER_UI
-        ${CMAKE_SOURCE_DIR}/files/tes3mp/ui/Main.ui
-        ${CMAKE_SOURCE_DIR}/files/tes3mp/ui/ServerInfo.ui
+        ${CMAKE_SOURCE_DIR}/files/dreamweave/ui/Main.ui
+        ${CMAKE_SOURCE_DIR}/files/dreamweave/ui/ServerInfo.ui
         )
 set(BROWSER
         main.cpp
@@ -17,7 +17,7 @@ set(BROWSER
         PingUpdater.cpp
         PingHelper.cpp
         QueryHelper.cpp
-        ${CMAKE_SOURCE_DIR}/files/tes3mp/browser.rc
+        ${CMAKE_SOURCE_DIR}/files/dreamweave/browser.rc
         )
 
 set(BROWSER_HEADER_MOC
@@ -66,7 +66,7 @@ if(NOT WIN32)
 endif(NOT WIN32)
 
 # Main executable
-add_executable(tes3mp-browser
+add_executable(dreamweave-browser
         ${GUI_TYPE}
         ${BROWSER}
         ${BROWSER_HEADER}
@@ -76,25 +76,25 @@ add_executable(tes3mp-browser
         )
 
 if (WIN32)
-    INSTALL(TARGETS tes3mp-browser RUNTIME DESTINATION ".")
+    INSTALL(TARGETS dreamweave-browser RUNTIME DESTINATION ".")
 endif (WIN32)
 
-target_link_libraries(tes3mp-browser
+target_link_libraries(dreamweave-browser
         ${SDL2_LIBRARY_ONLY}
         ${RakNet_LIBRARY}
         components
         )
 
 if (DESIRED_QT_VERSION MATCHES 4)
-#    target_link_libraries(tes3mp-browser ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+#    target_link_libraries(dreamweave-browser ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
 #    if(WIN32)
-#        target_link_libraries(tes3mp-browser ${QT_QTMAIN_LIBRARY})
+#        target_link_libraries(dreamweave-browser ${QT_QTMAIN_LIBRARY})
 #    endif(WIN32)
 else()
-    qt5_use_modules(tes3mp-browser Widgets Core)
+    qt5_use_modules(dreamweave-browser Widgets Core)
 endif()
 
 if (BUILD_WITH_CODE_COVERAGE)
     add_definitions (--coverage)
-    target_link_libraries(tes3mp-browser gcov)
+    target_link_libraries(dreamweave-browser gcov)
 endif()

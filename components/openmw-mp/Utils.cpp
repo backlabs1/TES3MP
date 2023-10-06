@@ -205,12 +205,13 @@ std::string Utils::getArchitectureType()
 #endif
 }
 
-std::string Utils::getVersionInfo(std::string appName, std::string version, std::string commitHash, int protocol)
+std::string Utils::getVersionInfo(std::string appName, std::string version, std::string commitHash, std::string dreamweaveVersion)
 {
     std::stringstream stream;
 
     stream << appName << " " << version << " (" << getOperatingSystemType() << " " << getArchitectureType() << ")" << std::endl;
-    stream << "Protocol version: " << protocol << std::endl;
+    // Dreamweave: Print what version of tes3mp Dreamweave is based on
+    stream << "Based on TES3MP: " << dreamweaveVersion << std::endl;
     stream << "Oldest compatible commit hash: " << commitHash.substr(0, 10) << std::endl;
     stream << "------------------------------------------------------------" << std::endl;
 

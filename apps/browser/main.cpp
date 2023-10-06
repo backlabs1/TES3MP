@@ -8,8 +8,9 @@ std::string loadSettings (Settings::Manager & settings)
 {
     Files::ConfigurationManager mCfgMgr;
     // Create the settings manager and load default settings file
-    const std::string localdefault = (mCfgMgr.getLocalPath() / "tes3mp-client-default.cfg").string();
-    const std::string globaldefault = (mCfgMgr.getGlobalPath() / "tes3mp-client-default.cfg").string();
+    // Dreamweave: Rename tes3mp settings to dreamweave
+    const std::string localdefault = (mCfgMgr.getLocalPath() / "dreamweave-client-default.cfg").string();
+    const std::string globaldefault = (mCfgMgr.getGlobalPath() / "dreamweave-client-default.cfg").string();
 
     // prefer local
     if (boost::filesystem::exists(localdefault))
@@ -17,10 +18,10 @@ std::string loadSettings (Settings::Manager & settings)
     else if (boost::filesystem::exists(globaldefault))
         settings.loadDefault(globaldefault, false);
     else
-        throw std::runtime_error ("No default settings file found! Make sure the file \"tes3mp-client-default.cfg\" was properly installed.");
+        throw std::runtime_error ("No default settings file found! Make sure the file \"dreamweave-client-default.cfg\" was properly installed.");
 
     // load user settings if they exist
-    const std::string settingspath = (mCfgMgr.getUserConfigPath() / "tes3mp-client.cfg").string();
+    const std::string settingspath = (mCfgMgr.getUserConfigPath() / "dreamweave-client.cfg").string();
     if (boost::filesystem::exists(settingspath))
         settings.loadUser(settingspath);
 
@@ -35,11 +36,6 @@ int main(int argc, char *argv[])
 
     std::string addr = mgr.getString("address", "Master");
     int port = mgr.getInt("port", "Master");
-
-    // Is this an attempt to connect to the official master server at the old port? If so,
-    // redirect it to the correct port for the currently used fork of RakNet
-    if (Misc::StringUtils::ciEqual(addr, "master.tes3mp.com") && port == 25560)
-        port = 25561;
 
     // initialize resources, if needed
     // Q_INIT_RESOURCE(resfile);

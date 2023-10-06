@@ -673,7 +673,8 @@ void OMW::Engine::createWindow(Settings::Manager& settings)
 
                 Rename the window into TES3MP
             */
-            mWindow = SDL_CreateWindow("TES3MP", pos_x, pos_y, width, height, flags);
+            // Dreamweave : Rename the window from TES3MP to Dreamweave
+            mWindow = SDL_CreateWindow("Dreamweave", pos_x, pos_y, width, height, flags);
             /*
                 End of tes3mp change (major)
             */
@@ -755,7 +756,8 @@ void OMW::Engine::setWindowIcon()
 
         Use TES3MP's logo for the window icon
     */
-    std::string windowIcon = (mResDir / "mygui" / "tes3mp_logo.png").string();
+    // Dreamweave: Replace TES3MP's logo with Dreamweave's
+    std::string windowIcon = (mResDir / "mygui" / "dreamweave_logo.png").string();
     /*
         End of tes3mp change (major)
     */

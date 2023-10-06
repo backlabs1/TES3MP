@@ -19,8 +19,7 @@
     {"GetMillisecondsSinceServerStart", ServerFunctions::GetMillisecondsSinceServerStart},\
     {"GetOperatingSystemType",          ServerFunctions::GetOperatingSystemType},\
     {"GetArchitectureType",             ServerFunctions::GetArchitectureType},\
-    {"GetServerVersion",                ServerFunctions::GetServerVersion},\
-    {"GetProtocolVersion",              ServerFunctions::GetProtocolVersion},\
+    {"GetDreamweaveVersion",            ServerFunctions::GetDreamweaveVersion},\
     {"GetAvgPing",                      ServerFunctions::GetAvgPing},\
     {"GetIP",                           ServerFunctions::GetIP},\
     {"GetMaxPlayers",                   ServerFunctions::GetMaxPlayers},\
@@ -159,18 +158,11 @@ public:
     static const char *GetArchitectureType() noexcept;
 
     /**
-    * \brief Get the TES3MP version of the server.
+    * \brief Get the version of the server.
     *
     * \return The server version.
     */
-    static const char *GetServerVersion() noexcept;
-
-    /**
-    * \brief Get the protocol version of the server.
-    *
-    * \return The protocol version.
-    */
-    static const char *GetProtocolVersion() noexcept;
+    static const char *GetDreamweaveVersion() noexcept;
 
     /**
     * \brief Get the average ping of a certain player.

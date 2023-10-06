@@ -1,4 +1,4 @@
-project(tes3mp-server)
+project(dreamweave-server)
 
 option(ENABLE_BREAKPAD "Enable Google Breakpad for Crash reporting" OFF)
 
@@ -76,7 +76,7 @@ set(SERVER_HEADER
         ${LuaScript_Headers}
         ${NativeScript_Headers}
 )
-source_group(tes3mp-server FILES ${SERVER} ${SERVER_HEADER})
+source_group(dreamweave-server FILES ${SERVER} ${SERVER_HEADER})
 
 set(PROCESSORS_ACTOR
         processors/actor/ProcessorActorAI.hpp processors/actor/ProcessorActorAnimFlags.hpp
@@ -88,7 +88,7 @@ set(PROCESSORS_ACTOR
         processors/actor/ProcessorActorStatsDynamic.hpp processors/actor/ProcessorActorTest.hpp
         )
 
-source_group(tes3mp-server\\processors\\actor FILES ${PROCESSORS_ACTOR})
+source_group(dreamweave-server\\processors\\actor FILES ${PROCESSORS_ACTOR})
 
 set(PROCESSORS_PLAYER
         processors/player/ProcessorChatMsg.hpp processors/player/ProcessorGUIMessageBox.hpp
@@ -111,7 +111,7 @@ set(PROCESSORS_PLAYER
         processors/player/ProcessorPlayerStatsDynamic.hpp processors/player/ProcessorPlayerTopic.hpp
         )
 
-source_group(tes3mp-server\\processors\\player FILES ${PROCESSORS_PLAYER})
+source_group(dreamweave-server\\processors\\player FILES ${PROCESSORS_PLAYER})
 
 set(PROCESSORS_OBJECT
         processors/object/ProcessorConsoleCommand.hpp processors/object/ProcessorContainer.hpp
@@ -128,7 +128,7 @@ set(PROCESSORS_OBJECT
         processors/object/ProcessorVideoPlay.hpp
         )
 
-source_group(tes3mp-server\\processors\\object FILES ${PROCESSORS_OBJECT})
+source_group(dreamweave-server\\processors\\object FILES ${PROCESSORS_OBJECT})
 
 set(PROCESSORS_WORLDSTATE
         processors/worldstate/ProcessorClientScriptGlobal.hpp processors/worldstate/ProcessorRecordDynamic.hpp
@@ -136,7 +136,7 @@ set(PROCESSORS_WORLDSTATE
         processors/worldstate/ProcessorWorldWeather.hpp
         )
 
-source_group(tes3mp-server\\processors\\worldstate FILES ${PROCESSORS_WORLDSTATE})
+source_group(dreamweave-server\\processors\\worldstate FILES ${PROCESSORS_WORLDSTATE})
 
 set(PROCESSORS
         processors/ProcessorInitializer.cpp
@@ -146,36 +146,36 @@ set(PROCESSORS
         processors/WorldstateProcessor.cpp
         )
 
-source_group(tes3mp-server\\processors FILES ${PROCESSORS})
+source_group(dreamweave-server\\processors FILES ${PROCESSORS})
 
 include_directories("./")
 include_directories(${CMAKE_SOURCE_DIR}/extern)
 
 # Main executable
 
-add_executable(tes3mp-server
+add_executable(dreamweave-server
         ${SERVER} ${SERVER_HEADER}
         ${PROCESSORS_ACTOR} ${PROCESSORS_PLAYER} ${PROCESSORS_OBJECT} ${PROCESSORS_WORLDSTATE} ${PROCESSORS}
         ${APPLE_BUNDLE_RESOURCES}
         )
 
-target_compile_options(tes3mp-server PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
+target_compile_options(dreamweave-server PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 
 if (OPENMW_MP_BUILD)
-	target_compile_options(tes3mp-server PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/MP>)
+	target_compile_options(dreamweave-server PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/MP>)
 endif()
 
-set_target_properties(tes3mp-server PROPERTIES
+set_target_properties(dreamweave-server PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
     CXX_EXTENSIONS YES
 )
 
 if (UNIX)
-	target_compile_options(tes3mp-server PRIVATE -Wno-ignored-qualifiers)
+	target_compile_options(dreamweave-server PRIVATE -Wno-ignored-qualifiers)
 endif()
 
-target_link_libraries(tes3mp-server
+target_link_libraries(dreamweave-server
     #${Boost_SYSTEM_LIBRARY}
     #${Boost_THREAD_LIBRARY}
     #${Boost_FILESYSTEM_LIBRARY}
@@ -187,16 +187,16 @@ target_link_libraries(tes3mp-server
 )
 
 if (UNIX)
-    target_link_libraries(tes3mp-server dl)
+    target_link_libraries(dreamweave-server dl)
     # Fix for not visible pthreads functions for linker with glibc 2.15
     if(NOT APPLE)
-        target_link_libraries(tes3mp-server ${CMAKE_THREAD_LIBS_INIT})
+        target_link_libraries(dreamweave-server ${CMAKE_THREAD_LIBS_INIT})
     endif(NOT APPLE)
 endif(UNIX)
 
 if (BUILD_WITH_CODE_COVERAGE)
   add_definitions (--coverage)
-  target_link_libraries(tes3mp-server gcov)
+  target_link_libraries(dreamweave-server gcov)
 endif()
 
 if (MSVC)

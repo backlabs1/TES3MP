@@ -193,25 +193,9 @@ bool parseOptions (int argc, char** argv, OMW::Engine& engine, Files::Configurat
 
     Version::Version v = Version::getOpenmwVersion(variables["resources"].as<Files::EscapePath>().mPath.string());
 
-    /*
-        Start of tes3mp addition
-
-        Print the multiplayer version first
-    */
-    Log(Debug::Info) << Utils::getVersionInfo("TES3MP client", TES3MP_VERSION, v.mCommitHash, TES3MP_PROTO_VERSION);
-    /*
-        End of tes3mp addition
-    */
-
-    /*
-        Start of tes3mp change (minor)
-
-        Because there is no need to print the commit hash again, only print OpenMW's version
-    */
+    // Dreamweave: Replaced TES3MP's initial version logging to reference Dreamweave, TES3MP and OpenMW 
+    Log(Debug::Info) << Utils::getVersionInfo("Dreamweave client", DREAMWEAVE_VERSION, v.mCommitHash, TES3MP_VERSION);
     Log(Debug::Info) << "OpenMW version " << v.mVersion;
-    /*
-        End of tes3mp change (minor)
-    */
 
     engine.setGrabMouse(!variables["no-grab"].as<bool>());
 
@@ -407,7 +391,8 @@ int main(int argc, char**argv)
         Instead of logging information in openmw.log, use a more descriptive filename
         that includes a timestamp
     */
-    return wrapApplication(&runApplication, argc, argv, "/tes3mp-client-" + TimedLog::getFilenameTimestamp());
+    // Dreamweave: Replace TES3MP reference with Dreamweave    
+    return wrapApplication(&runApplication, argc, argv, "/dreamweave-client-" + TimedLog::getFilenameTimestamp());
     /*
         End of tes3mp change (major)
     */

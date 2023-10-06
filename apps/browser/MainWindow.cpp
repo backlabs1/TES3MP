@@ -143,7 +143,8 @@ void MainWindow::play()
         arguments.append(QLatin1String("--password=") + passw.toLatin1());
     }
 
-    if (mGameInvoker->startProcess(QLatin1String("tes3mp"), arguments, true))
+    // Dreamweave: rename from tes3mp to dreamweave
+    if (mGameInvoker->startProcess(QLatin1String("dreamweave"), arguments, true))
         return qApp->quit();
 }
 

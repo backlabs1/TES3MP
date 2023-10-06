@@ -94,15 +94,9 @@ const char *ServerFunctions::GetArchitectureType() noexcept
     return architectureType.c_str();
 }
 
-const char *ServerFunctions::GetServerVersion() noexcept
+const char *ServerFunctions::GetDreamweaveVersion() noexcept
 {
-    return TES3MP_VERSION;
-}
-
-const char *ServerFunctions::GetProtocolVersion() noexcept
-{
-    static std::string version = std::to_string(TES3MP_PROTO_VERSION);
-    return version.c_str();
+    return DREAMWEAVE_VERSION;
 }
 
 int ServerFunctions::GetAvgPing(unsigned short pid) noexcept
