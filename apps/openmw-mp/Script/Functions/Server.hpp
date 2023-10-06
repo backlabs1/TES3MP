@@ -20,7 +20,6 @@
     {"GetOperatingSystemType",          ServerFunctions::GetOperatingSystemType},\
     {"GetArchitectureType",             ServerFunctions::GetArchitectureType},\
     {"GetDreamweaveVersion",            ServerFunctions::GetDreamweaveVersion},\
-    {"GetProtocolVersion",              ServerFunctions::GetProtocolVersion},\
     {"GetAvgPing",                      ServerFunctions::GetAvgPing},\
     {"GetIP",                           ServerFunctions::GetIP},\
     {"GetMaxPlayers",                   ServerFunctions::GetMaxPlayers},\
@@ -164,13 +163,6 @@ public:
     * \return The server version.
     */
     static const char *GetDreamweaveVersion() noexcept;
-
-    /**
-    * \brief Get the protocol version of the server.
-    *
-    * \return The protocol version.
-    */
-    static const char *GetProtocolVersion() noexcept;
 
     /**
     * \brief Get the average ping of a certain player.
