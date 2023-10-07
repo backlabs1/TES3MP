@@ -572,10 +572,15 @@ namespace MWGui
         // Delete any dialogs which are no longer in use
         if (!mGarbageDialogs.empty())
         {
-            for (Layout* widget : mGarbageDialogs)
-            {
-                delete widget;
-            }
+            
+            // Dreamweave: Below was commented out due to causing a null pointer when stacking listboxes 
+            // Currently their is no other solution known at this time
+            // https://github.com/DreamWeave-MP/Dreamweave/issues/43
+
+            // for (Layout* widget : mGarbageDialogs)
+            // {
+            //     delete widget;
+            // }
             mGarbageDialogs.clear();
         }
     }
