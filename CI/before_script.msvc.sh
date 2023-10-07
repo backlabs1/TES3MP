@@ -63,6 +63,7 @@ STRIP=""
 SKIP_DOWNLOAD=""
 SKIP_EXTRACT=""
 USE_CCACHE=""
+USE_LTO=""
 KEEP=""
 UNITY_BUILD=""
 VS_VERSION=""
@@ -151,6 +152,9 @@ while [ $# -gt 0 ]; do
 
 			T )
 				USE_CLANG_TIDY=true ;;
+
+			L )
+			        USE_LTO=true ;;
 
 			h )
 				cat <<EOF
@@ -542,7 +546,9 @@ if ! [ -z $USE_CCACHE ]; then
 fi
 
 # turn on LTO by default
+if ! [ -z "USE_LTO" ]; then
 add_cmake_opts "-DOPENMW_LTO_BUILD=True"
+fi
 
 if ! [ -z "$USE_WERROR" ]; then
   add_cmake_opts "-DOPENMW_MSVC_WERROR=ON"
