@@ -67,6 +67,36 @@ namespace MWScript
                     MWMechanics::AiActivate activatePackage(objectID);
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(activatePackage, ptr);
                     Log(Debug::Info) << "AiActivate";
+
+                    /*
+                      Start of dreamweave addition
+
+                      Send ActorAI packets when an actor becomes a follower,
+                      regardless of whether we're the cell authority or not; the
+                      server can decide if it wants to comply with them by
+                      forwarding them to the cell authority
+                    */
+                    MWWorld::Ptr targetPtr = MWBase::Environment::get().getWorld()->searchPtr(objectID, true);
+
+                    if (targetPtr)
+                        {
+                            // Common Logic
+                            mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                            mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
+                            actorList->reset();
+                            actorList->cell = *ptr.getCell()->getCell();
+                            baseActor.aiAction = mwmp::BaseActorList::ACTIVATE;
+
+                            // Package-specific logic
+                            baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
+
+                            // Send it
+                            actorList->queueAiActor(baseActor);
+                            actorList->sendAiActors();
+                        }
+                    /*
+                        End of dreamweave addition
+                    */
                 }
         };
 
@@ -95,6 +125,34 @@ namespace MWScript
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(travelPackage, ptr);
 
                     Log(Debug::Info) << "AiTravel: " << x << ", " << y << ", " << z;
+
+                    /*
+                      Start of dreamweave addition
+
+                      Send ActorAI packets when an actor begins travelling,
+                      regardless of whether we're the cell authority or not; the
+                      server can decide if it wants to comply with them by
+                      forwarding them to the cell authority
+                    */
+
+                    // Common Logic
+                    mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                    mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
+                    actorList->reset();
+                    actorList->cell = *ptr.getCell()->getCell();
+                    baseActor.aiAction = mwmp::BaseActorList::TRAVEL;
+
+                    // Package-Specific logic
+                    baseActor.aiCoordinates.pos[0] = x;
+                    baseActor.aiCoordinates.pos[1] = y;
+                    baseActor.aiCoordinates.pos[2] = z;
+
+                    // Send it
+                    actorList->queueAiActor(baseActor);
+                    actorList->sendAiActors();
+                    /*
+                        End of dreamweave addition
+                    */
                 }
         };
 
@@ -129,6 +187,39 @@ namespace MWScript
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(escortPackage, ptr);
 
                     Log(Debug::Info) << "AiEscort: " << x << ", " << y << ", " << z << ", " << duration;
+
+                    /*
+                        Start of dreamweave addition
+
+                        Send ActorAI packets when an actor begins escorting, regardless of whether we're
+                        the cell authority or not; the server can decide if it wants to comply with them by
+                        forwarding them to the cell authority
+                    */
+                    MWWorld::Ptr targetPtr = MWBase::Environment::get().getWorld()->searchPtr(actorID, true);
+
+                    if (targetPtr)
+                        {
+                            // Common Logic
+                            mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                            mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
+                            actorList->reset();
+                            actorList->cell = *ptr.getCell()->getCell();
+                            baseActor.aiAction = mwmp::BaseActorList::ESCORT;
+
+                            // Package-specific logic
+                            baseActor.aiCoordinates.pos[0] = x;
+                            baseActor.aiCoordinates.pos[1] = y;
+                            baseActor.aiCoordinates.pos[2] = z;
+                            baseActor.aiDuration = duration;
+                            baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
+
+                            // Send it
+                            actorList->queueAiActor(baseActor);
+                            actorList->sendAiActors();
+                        }
+                    /*
+                      End of dreamweave addition
+                    */
                 }
         };
 
@@ -241,6 +332,33 @@ namespace MWScript
 
                     MWMechanics::AiWander wanderPackage(range, duration, time, idleList, repeat);
                     ptr.getClass().getCreatureStats (ptr).getAiSequence().stack(wanderPackage, ptr);
+
+                    /*
+                      Start of dreamweave addition
+
+                      Send ActorAI packets when an actor starts wandering, regardless of whether we're
+                      the cell authority or not; the server can decide if it wants to comply with them by
+                      forwarding them to the cell authority
+                    */
+
+                    // Common Logic
+                    mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                    mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
+                    actorList->reset();
+                    actorList->cell = *ptr.getCell()->getCell();
+                    baseActor.aiAction = mwmp::BaseActorList::WANDER;
+
+                    // Package-specific logic
+                    baseActor.aiDuration = duration;
+                    baseActor.aiDistance = range;
+                    baseActor.aiShouldRepeat = repeat;
+
+                    // Send it
+                    actorList->queueAiActor(baseActor);
+                    actorList->sendAiActors();
+                    /*
+                        End of dreamweave addition
+                    */
                 }
         };
 
@@ -370,10 +488,21 @@ namespace MWScript
 
                     if (targetPtr)
                     {
+                        // Common Logic
                         mwmp::ActorList *actorList = mwmp::Main::get().getNetworking()->getActorList();
+                        mwmp::BaseActor baseActor = mwmp::BaseActor(ptr);
                         actorList->reset();
                         actorList->cell = *ptr.getCell()->getCell();
-                        actorList->addAiActor(ptr, targetPtr, mwmp::BaseActorList::FOLLOW);
+                        baseActor.aiAction = mwmp::BaseActorList::FOLLOW;
+
+                        // Package-specific logic
+                        baseActor.aiCoordinates.pos[0] = x;
+                        baseActor.aiCoordinates.pos[1] = y;
+                        baseActor.aiCoordinates.pos[2] = z;
+                        baseActor.aiTarget = MechanicsHelper::getTarget(targetPtr);
+
+                        // Send it
+                        actorList->queueAiActor(baseActor);
                         actorList->sendAiActors();
                     }
                     /*

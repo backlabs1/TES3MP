@@ -7,6 +7,8 @@
 
 #include <RakNetTypes.h>
 
+#include <apps/openmw/mwworld/class.hpp>
+
 namespace mwmp
 {
     class BaseActor
@@ -17,6 +19,15 @@ namespace mwmp
         {
             hasPositionData = false;
             hasStatsDynamicData = false;
+        }
+
+        BaseActor(const MWWorld::Ptr &actorPtr)
+        {
+            hasPositionData = false;
+            hasStatsDynamicData = false;
+            this->refId = actorPtr.getCellRef().getRefId();
+            this->refNum = actorPtr.getCellRef().getRefNum().mIndex;
+            this->mpNum = actorPtr.getCellRef().getMpNum();
         }
 
         std::string refId = "";

@@ -33,6 +33,7 @@ namespace mwmp
         void addAttackActor(const MWWorld::Ptr& actorPtr, const mwmp::Attack &attack);
         void addCastActor(BaseActor baseActor);
         void addCellChangeActor(BaseActor baseActor);
+        void queueAiActor(BaseActor baseActor);
 
         void sendPositionActors();
         void sendAnimFlagsActors();
