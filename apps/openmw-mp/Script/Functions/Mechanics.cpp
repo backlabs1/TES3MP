@@ -144,6 +144,14 @@ unsigned int MechanicsFunctions::GetDrawState(unsigned short pid) noexcept
     return player->drawState;
 }
 
+const char *MechanicsFunctions::GetPlayerAttackType(unsigned short pid) noexcept
+{
+    Player *player;
+    GET_PLAYER(pid, player, "");
+
+    return player->attack.attackAnimation.c_str();
+}
+
 bool MechanicsFunctions::GetSneakState(unsigned short pid) noexcept
 {
     Player *player;

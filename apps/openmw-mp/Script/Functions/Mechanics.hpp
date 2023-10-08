@@ -24,6 +24,7 @@
     {"GetPlayerKillerName",         MechanicsFunctions::GetPlayerKillerName},\
     \
     {"GetDrawState",                MechanicsFunctions::GetDrawState},\
+    {"GetPlayerAttackType",         MechanicsFunctions::GetPlayerAttackType},\
     {"GetSneakState",               MechanicsFunctions::GetSneakState},\
     \
     {"SetMarkCell",                 MechanicsFunctions::SetMarkCell},\
@@ -175,6 +176,14 @@ public:
     * \return The draw state.
     */
     static unsigned int GetDrawState(unsigned short pid) noexcept;
+
+    /**
+    * \brief Get the type of the last attack type done by the player (chop, slash, thrust)
+    *
+    * \param pid The player ID.
+    * \return The attack animation as a string, or an empty string if not attacking.
+    */
+    static const char *GetPlayerAttackType(unsigned short pid) noexcept;
 
     /**
     * \brief Get the sneak state of a player.
