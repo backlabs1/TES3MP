@@ -1,4 +1,4 @@
-name: Linux Build & Test
+name: Ubuntu Build & Test
 
 on:
   push:
@@ -13,12 +13,12 @@ on:
   workflow_dispatch:
 
 env:
-  BUILD_TYPE: Release
+  BUILD_TYPE: RelWithDebInfo
   GIT_TERMINAL_PROMPT: 0
 
 jobs:
   Ubuntu:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
