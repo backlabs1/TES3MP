@@ -79,6 +79,13 @@ done
 
 git clone https://github.com/DreamWeave-MP/CoreScripts.git server/
 
+echo "Acquiring cjson . . ."
+curl -L \
+     -H "Accept: application/vnd.github+json" \
+     -H "X-GitHub-Api-Version: 2022-11-28" \
+     https://api.github.com/repos/Dreamweave-MP/lua-cjson/releases/latest | grep -P '^(?=.*browser_download_url)(?=.*cjson-MinSizeRel.so)' | rev | cut -f 1 -d ' ' | rev | xargs wget -O server/lib/cjson.so
+
+
 
 # Create pre-launch script
 cat << 'EOF' > dreamweave-prelaunch
@@ -136,3 +143,7 @@ EOF
     fi
   done
   chmod 755 *
+
+  echo "Job complete! Making archive . . ."
+  cd ..
+  tar -cvf dreamweave_linux.tar dreamweave-build

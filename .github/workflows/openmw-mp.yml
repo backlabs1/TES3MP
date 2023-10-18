@@ -53,9 +53,9 @@ jobs:
         run: sudo CI/make_package.sh
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
-          path: dreamweave-build
+          path: dreamweave_linux.tar
           name: dreamweave_linux
 
   # MacOS:
