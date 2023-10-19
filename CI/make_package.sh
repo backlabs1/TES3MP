@@ -80,11 +80,7 @@ done
 git clone https://github.com/DreamWeave-MP/CoreScripts.git server/
 
 echo "Acquiring cjson . . ."
-curl -L \
-     -H "Accept: application/vnd.github+json" \
-     -H "X-GitHub-Api-Version: 2022-11-28" \
-     https://api.github.com/repos/Dreamweave-MP/lua-cjson/releases/latest | grep -P '^(?=.*browser_download_url)(?=.*cjson-MinSizeRel.so)' | rev | cut -f 1 -d ' ' | rev | xargs wget -O server/lib/cjson.so
-
+curl  -o server/lib/cjson.dll -L https://github.com/DreamWeave-MP/lua-cjson/releases/download/Stable-CI/cjson-MinSizeRel.dll
 
 
 # Create pre-launch script
