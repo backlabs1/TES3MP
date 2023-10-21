@@ -7,8 +7,8 @@
 #  RakNet_LIBRARY - Link these to use RakNet
 
 IF(WIN32)
-  set(RakNet_LIBRARY_DEBUG ${CMAKE_SOURCE_DIR}/extern/raknet/lib/libRakNetLibStaticd.lib)
-  set(RakNet_LIBRARY_RELEASE ${CMAKE_SOURCE_DIR}/extern/raknet/lib/libRakNetLibStatic.lib)
+  set(RakNet_LIBRARY_DEBUG ${CMAKE_SOURCE_DIR}/extern/raknet/RakNetLibStaticd.lib)
+  set(RakNet_LIBRARY_RELEASE ${CMAKE_SOURCE_DIR}/extern/raknet/RakNetLibStatic.lib)
 ELSE()
   set(RakNet_LIBRARY_DEBUG ${CMAKE_SOURCE_DIR}/extern/raknet/lib/libRakNetLibStaticd.a)
   set(RakNet_LIBRARY_RELEASE ${CMAKE_SOURCE_DIR}/extern/raknet/lib/libRakNetLibStatic.a)
@@ -16,11 +16,12 @@ ENDIF(WIN32)
 
 FIND_PATH (RakNet_INCLUDES raknet/RakPeer.h ${CMAKE_SOURCE_DIR}/extern/raknet/include)
 
+
 MESSAGE(STATUS ${RakNet_INCLUDES})
 MESSAGE(STATUS ${RakNet_LIBRARY_RELEASE})
 MESSAGE(STATUS ${RakNet_LIBRARY_DEBUG})
 
-IF(RakNet_FIND_REQUIRED)
+IF(NOT RakNet_INCLUDES)
 	MESSAGE(STATUS "Could not find RakNet, building from local copy")
 
 	find_package(Git QUIET)
@@ -42,12 +43,10 @@ IF(RakNet_FIND_REQUIRED)
 	if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/raknet/CMakeLists.txt")
 	       message(FATAL_ERROR "The submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 	endif()
-ENDIF(RakNet_FIND_REQUIRED)
-
 add_subdirectory(extern/raknet)
+ENDIF(NOT RakNet_INCLUDES)
 
 SET(RakNet_INCLUDES ${CMAKE_SOURCE_DIR}/extern/raknet/include/raknet)
-
 IF (CMAKE_CONFIGURATION_TYPES OR CMAKE_BUILD_TYPE)
    SET(RakNet_LIBRARY optimized ${RakNet_LIBRARY_RELEASE} debug ${RakNet_LIBRARY_DEBUG})
    IF(WIN32)

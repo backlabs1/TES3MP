@@ -1,3 +1,9 @@
+# Allow using MSVC_DEBUG_INFORMATION_FORMAT instead of string-replacing /Zi for ccache compatibility
+# Yes, this really does need to be here
+if(POLICY CMP0141)
+    cmake_policy(SET CMP0141 NEW)
+endif()
+
 project(OpenMW)
 cmake_minimum_required(VERSION 3.1.0)
 set(CMAKE_CXX_STANDARD 17)
@@ -17,7 +23,27 @@ option(OPENMW_GL4ES_MANUAL_INIT "Manually initialize gl4es. This is more reliabl
 if(OPENMW_GL4ES_MANUAL_INIT)
     add_definitions(-DOPENMW_GL4ES_MANUAL_INIT)
 endif()
+if(WIN32)
+  find_program(ccache_exe ccache REQUIRED)
+  if(ccache_exe)
+      file(COPY_FILE
+          ${ccache_exe} ${CMAKE_BINARY_DIR}/cl.exe
+          ONLY_IF_DIFFERENT)
 
+      # By default Visual Studio generators will use /Zi which is not compatible
+      # with ccache, so tell Visual Studio to use /Z7 instead.
+      message(STATUS "Setting MSVC debug information format to 'Embedded'")
+      set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<$<CONFIG:Debug,RelWithDebInfo>:Embedded>")
+
+      set(CMAKE_VS_GLOBALS
+          "CLToolExe=cl.exe"
+          "CLToolPath=${CMAKE_BINARY_DIR}"
+          "TrackFileAccess=false"
+          "UseMultiToolTask=true"
+          "DebugInformationFormat=OldStyle"
+      )
+  endif()
+endif(WIN32)
 # Apps and tools
 option(BUILD_OPENMW             "Build OpenMW" ON)
 option(BUILD_LAUNCHER           "Build Launcher" ON)
@@ -30,7 +56,7 @@ option(BUILD_ESMTOOL            "Build ESM inspector" ON)
 option(BUILD_NIFTEST            "Build nif file tester" ON)
 option(BUILD_DOCS               "Build documentation." OFF )
 option(BUILD_WITH_CODE_COVERAGE "Enable code coverage with gconv" OFF)
-option(BUILD_UNITTESTS          "Enable Unittests with Google C++ Unittest" ON)
+option(BUILD_UNITTESTS          "Enable Unittests with Google C++ Unittest" OFF)
 option(BUILD_BENCHMARKS         "Build benchmarks with Google Benchmark" OFF)
 option(BUILD_OPENMW_MP          "Build OpenMW-MP" ON)
 option(BUILD_BROWSER            "Build tes3mp Server Browser" ON)

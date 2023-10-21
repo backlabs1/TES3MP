@@ -650,8 +650,8 @@ if [ -z $SKIP_DOWNLOAD ]; then
 
 	# LuaJIT
 	download "LuaJIT ${LUAJIT_VER}" \
-		"https://gitlab.com/OpenMW/openmw-deps/-/raw/main/windows/LuaJIT-${LUAJIT_VER}-msvc${LUA_MSVC_YEAR}-win${BITS}.7z" \
-		"LuaJIT-${LUAJIT_VER}-msvc${LUA_MSVC_YEAR}-win${BITS}.7z"
+		"https://github.com/DreamWeave-MP/LuaJIT/releases/download/Stable-CI/LuaJIT-Windows.7z" \
+		"LuaJIT-DW.7z"
 
 	# ICU
 	download "ICU ${ICU_VER/_/.}"\
@@ -1001,7 +1001,7 @@ printf "LuaJIT ${LUAJIT_VER}... "
 		printf "Exists. "
 	elif [ -z $SKIP_EXTRACT ]; then
 		rm -rf LuaJIT
-		eval 7z x -y LuaJIT-${LUAJIT_VER}-msvc${LUA_MSVC_YEAR}-win${BITS}.7z -o$(real_pwd)/LuaJIT $STRIP
+		eval 7z x -y LuaJIT-DW.7z -o$(real_pwd)/LuaJIT $STRIP
 	fi
 	export LUAJIT_DIR="$(real_pwd)/LuaJIT"
 	add_cmake_opts -DLuaJit_INCLUDE_DIR="${LUAJIT_DIR}/include" \
