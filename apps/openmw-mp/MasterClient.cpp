@@ -188,7 +188,7 @@ void MasterClient::Thread()
     sRun = true;
 
     queryData.SetPassword((int) Networking::get().isPassworded());
-    queryData.SetVersion(TES3MP_VERSION);
+    queryData.SetVersion(DREAMWEAVE_VERSION);
 
     auto *players = Players::getPlayers();
     while (sRun)
