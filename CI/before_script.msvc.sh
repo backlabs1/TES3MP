@@ -595,6 +595,17 @@ if [ -z $SKIP_DOWNLOAD ]; then
 		git reset --hard 19e66190e83f53bcdcbcd6513238ed2e54878a21
 		cd ..
 	fi
+
+	# LuaJIT
+	echo "LuaJit c525bcb902 ..."
+	if [[ -d LuaJIT ]]; then
+		printf "  directory exists, skipping."
+	else
+		git clone https://luajit.org/git/luajit.git
+		cd luajit
+		git reset --hard c525bcb9024510cad9e170e12b6209aedb330f83
+		cd ..
+	fi
 fi
 
 cd .. #/..
@@ -1020,6 +1031,28 @@ printf "RakNet/CrabNet... "
 	add_cmake_opts -DRakNet_INCLUDES=$DEPS_INSTALL/CrabNet/include
 	add_cmake_opts -DRakNet_LIBRARY_RELEASE=$DEPS_INSTALL/CrabNet/build/lib/Release/RakNetLibStatic.lib
 	add_cmake_opts -DRakNet_LIBRARY_DEBUG=$DEPS_INSTALL/CrabNet/build/lib/Release/RakNetLibStatic.lib
+}
+cd $DEPS
+echo
+# LuaJIT
+printf "LuaJIT... "
+{
+	if [[ -d $DEPS_INSTALL/luajit ]]; then
+		echo "already built"
+	else
+		cd $DEPS/luajit/
+		mingw32-make -j $NUMBER_OF_PROCESSORS
+		tmp=$DEPS_INSTALL/tmp/luajit
+		mkdir -p $tmp/lua
+		cp src/luajit.exe $tmp
+		cp -r src/jit src/lua51.dll $tmp/lua/
+		mv $tmp $DEPS_INSTALL
+	fi
+	add_cmake_opts -DLuaJit_INCLUDE_DIR=$DEPS_INSTALL/luajit/lua
+	add_cmake_opts -DLuaJit_LIBRARY=$DEPS_INSTALL/luajit/lua
+	for config in ${CONFIGURATIONS[@]}; do
+		add_runtime_dlls $config $DEPS_INSTALL/luajit/lua/lua51.dll
+	done
 }
 
 echo
