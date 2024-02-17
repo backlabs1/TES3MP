@@ -196,7 +196,7 @@ if (WIN32)
 endif()
 
 find_package(RakNet REQUIRED)
-include_directories(${RakNet_INCLUDES})
+include_directories(${RakNet_INCLUDE_DIRS})
 
 # Dependencies
 find_package(OpenGL REQUIRED)
