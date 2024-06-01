@@ -1,49 +1,56 @@
-TES3MP
-======
+# TES3MP by backlabs1
 
-Copyright (c) 2008-2015, OpenMW Team  
-Copyright (c) 2016-2022, David Cernat & Stanislav Zhukov
+"The Elder Scrolls III: Morrowind", is a single-player open-world role-playing
+video game by Bethesda Softworks, released
+in 2002. [OpenMW](https://openmw.org/) is an open-source game engine that
+supports playing Morrowind, using Morrowind's data
+files. [TES3MP](https://tes3mp.com) is a project adding multiplayer
+functionality to OpenMW.
 
-TES3MP is a project adding multiplayer functionality to [OpenMW](https://github.com/OpenMW/openmw), an open-source game engine that supports playing "The Elder Scrolls III: Morrowind" by Bethesda Softworks.
+This project, currently called "TES3MP by backlabs1", is a fork of TES3MP with
+a focus on supporting the Morrowind, OpenMW, and TES3MP community, engaging
+new interest, and bringing together more of the wide array of
+Morrowind-related content and software for players to enjoy.
 
-* TES3MP version: 0.8.1
-* OpenMW version: 0.47.0
-* License: GPLv3 (see [LICENSE](https://github.com/TES3MP/TES3MP/blob/master/LICENSE) for more information)
+Like upstream TES3MP, this project is currently a work in progress and does
+not claim to offer a bug-free gaming experience. Furthermore, this project is
+**experimental** and status, names, versioning, URLs, etc. are subject to
+change in breaking ways.
 
-Font Licenses:
-* DejaVuLGCSansMono.ttf: custom (see [files/mygui/DejaVuFontLicense.txt](https://github.com/TES3MP/TES3MP/blob/master/files/mygui/DejaVuFontLicense.txt) for more information)
+The current goal of this project is to polish the non-VR releases for Linux,
+macOS, and Windows. There are a variety of other potential goals for the
+future.
 
-Project status
---------------
+## Contributing
 
-[Version changelog](https://github.com/TES3MP/TES3MP/blob/master/tes3mp-changelog.md)
+If you want to help this project succeed, consider:
 
-As of version 0.8.1, TES3MP is fully playable, providing very extensive player, NPC, world and quest synchronization, as well as state saving and loading, all of which are highly customizable via [serverside Lua scripts](https://github.com/TES3MP/CoreScripts).
+- donating to OpenMW developers (see [the OpenMW
+  FAQ](https://openmw.org/faq/#donations)), the TES3MP developers (see
+  [TES3MP.com](http://tes3mp.com/#donations)), or backlabs1 (please send a
+  note to <backlabs1@mailbox.org>);
+- contributing code changes to OpenMW (see [the OpenMW
+  FAQ](https://openmw.org/faq/#help)) or TES3MP (see
+  [TES3MP.com](http://tes3mp.com/#contributing));
+- reporting bugs and triaging bug reports for OpenMW or TES3MP; and
+- telling others about OpenMW, TES3MP, or this project.
 
-Remaining gameplay problems mostly relate to AI and the fact that clientside script variables need to be placed on a synchronization whitelist to avoid packet spam.
+## Credits and licenses
 
-TES3MP now also has a [VR branch](https://github.com/TES3MP/TES3MP/tree/0.8.1-vr) that combines its code with that of Mads Buvik Sandvei's [OpenMW VR](https://gitlab.com/madsbuvi/openmw).
+This project exists thanks to many people who have contributed to both OpenMW
+and TES3MP. See also `AUTHORS.md` and `tes3mp-credits.md`. This "TES3MP by
+backlabs1" project is maintained by "backlabs1" <backlabs1@mailbox.org>.
 
-Donations
----------------
+The code published here is made available according to the terms of the GNU
+General Public License, version 3. See `LICENSE` or
+<https://www.gnu.org/licenses/gpl-3.0.txt> for a copy.
 
-You can benefit the project by donating on Patreon to our two developers, [David Cernat](https://www.patreon.com/davidcernat) and [Koncord](https://www.patreon.com/Koncord), as well as by supporting [OpenMW](https://openmw.org).
+The `files/mygui/DejaVuLGCSansMono.ttf` font is being used according to the
+terms of `files/mygui/DejaVuFontLicense.txt`.
 
-Contributing
----------------
+This project is not affiliated with or endorsed by Bethesda Softworks, OpenMW,
+or TES3MP.
 
-Helping us with documentation, bug hunting and video showcases is always greatly appreciated.
-
-For code contributions, it's best to start out with modestly sized fixes and features and work your way up. There are so many different possible implementations of more major features – many of which would cause undesirable code or vision conflicts with OpenMW – that those should be talked over in advance with the existing developers before effort is spent on them.
-
-Feel free to contact the [team members](https://github.com/TES3MP/TES3MP/blob/master/tes3mp-credits.md) for any questions you might have.
-
-Getting started
----------------
-
-* [Quickstart guide](https://github.com/TES3MP/TES3MP/wiki/Quickstart-guide)
-* [Steam group](https://steamcommunity.com/groups/mwmulti) and its [detailed FAQ](https://steamcommunity.com/groups/mwmulti/discussions/1/353916184342480541/)
-* [TES3MP section on OpenMW forums](https://forum.openmw.org/viewforum.php?f=45)
-* [Discord server](https://discord.gg/ECJk293)
-* [Subreddit](https://www.reddit.com/r/tes3mp)
-* [Known issues and bug reports](https://github.com/TES3MP/TES3MP/issues)
+Copyright © 2008-2021 OpenMW Team
+Copyright © 2016-2022 David Cernat & Stanislav Zhukov
+Copyright © 2024 backlabs1 <backlabs1@mailbox.org>
