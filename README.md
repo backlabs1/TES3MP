@@ -44,6 +44,35 @@ If you want to help this project succeed, consider:
 - To build with the exact version of Guix specified in `channels.scm`, run
   `guix time-machine --channels=channels.scm -- build --file=guix.scm`.
 
+## Building on macOS
+
+Follow these steps to build TES3MP on macOS, using the Terminal app to execute
+commands. This will produce universal binaries compatible with both Intel- and
+Apple Silicon-based hardware. Note however the `tes3mp-server` runs well only
+on Intel-based hardware.
+
+- Download "Command Line Tools for Xcode 15.1" from
+  <https://developer.apple.com/downloads> and install it. You will need a free
+  Apple developer account. (Xcode 15.3 requires macOS 14.)
+  - `hdiutil attach Command_Line_Tools_for_Xcode_15.1.dmg`
+  - `cd "/Volumes/Command Line Developer Tools/"`
+  - `sudo installer -pkg "Command Line Tools.pkg" -target /`
+  - `hdiutil detach "/Volumes/Command Line Developer Tools"`
+- Install [Homebrew](https://brew.sh/) by running `/bin/bash -c "$(curl -fsSL
+  https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`. Read
+  the output about "analytics" and "next steps" and follow instructions to
+  finish the Homebrew setup.
+- Run `./CI/macos/build.sh`. **WARNING: This script will install dependencies
+  using Homebrew.**
+
+The first time you run the application, you may need to right-click the `.app`
+and select "Open" due to the app being unsigned. This process will prompt you
+to confirm that you really want to open the application. After doing this
+once, you should be able run the application normally.
+
+Run the server (on Intel-based hardware) with
+`/Applications/TES3MP.app/Contents/MacOS/tes3mp-server`.
+
 ## Credits and licenses
 
 This project exists thanks to many people who have contributed to both OpenMW
