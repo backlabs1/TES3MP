@@ -1023,7 +1023,7 @@ printf "RakNet/CrabNet... "
 		rm -rf build
 		mkdir build
 		cd build/
-		cmake -DCMAKE_BUILD_TYPE=Release ..
+		cmake ..
 		cmake --build . --target RakNetLibStatic --config Release \
 			--clean-first -- -maxcpucount
 		cd ../..
