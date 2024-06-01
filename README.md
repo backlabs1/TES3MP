@@ -35,6 +35,15 @@ If you want to help this project succeed, consider:
 - reporting bugs and triaging bug reports for OpenMW or TES3MP; and
 - telling others about OpenMW, TES3MP, or this project.
 
+## Building on Linux (with Guix)
+
+- Install Guix (for example, on Debian GNU/Linux, run `apt install guix`)
+  unless you are running GuixSD.
+- To build with your current version of Guix, run `guix build
+  --file=guix.scm`.
+- To build with the exact version of Guix specified in `channels.scm`, run
+  `guix time-machine --channels=channels.scm -- build --file=guix.scm`.
+
 ## Credits and licenses
 
 This project exists thanks to many people who have contributed to both OpenMW

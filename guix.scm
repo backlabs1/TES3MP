@@ -1,0 +1,1 @@
+.guix/modules/tes3mp-package.scm
