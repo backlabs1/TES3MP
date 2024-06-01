@@ -1061,7 +1061,19 @@ echo
 cd $DEPS_INSTALL/..
 echo
 echo "Setting up OpenMW build..."
-add_cmake_opts -DOPENMW_MP_BUILD=on
+add_cmake_opts -DBUILD_BSATOOL=OFF
+add_cmake_opts -DBUILD_ESMTOOL=OFF
+add_cmake_opts -DBUILD_ESSIMPORTER=OFF
+add_cmake_opts -DBUILD_NIFTEST=OFF
+add_cmake_opts -DBUILD_OPENCS=OFF
+# For building client only (currently, build fails with luajit problem)
+add_cmake_opts -DBUILD_OPENMW_MP=OFF
+# For building server only
+# add_cmake_opts -DBUILD_BROWSER=OFF
+# add_cmake_opts -DBUILD_LAUNCHER=OFF
+# add_cmake_opts -DBUILD_MWINIIMPORTER=OFF
+# add_cmake_opts -DBUILD_OPENMW=OFF
+# add_cmake_opts -DBUILD_WIZARD=OFF
 add_cmake_opts -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}"
 if [ ! -z $CI ]; then
 	case $STEP in

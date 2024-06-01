@@ -54,8 +54,7 @@ rm -fr MSVC2019_64_Ninja
 CI/before_script.msvc.sh -k -p Win64 -v 2019 -N -V
 cd MSVC2019_64_Ninja
 source activate_msvc.sh
-ninja -f build-Release.ninja openmw-iniimporter openmw-launcher \
-                             openmw-wizard tes3mp tes3mp-browser tes3mp-server
+ninja -f build-Release.ninja
 
 # Create archive
 archive_filename=TES3MP-$(git describe --dirty)-Release.tar.gz
