@@ -26,6 +26,7 @@ protected slots:
     void directConnect();
     void play();
     void serverSelected();
+    void testConnect();
     void notFullSwitch(bool state);
     void havePlayersSwitch(bool state);
     void noPasswordSwitch(bool state);

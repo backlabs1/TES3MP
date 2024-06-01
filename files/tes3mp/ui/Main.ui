@@ -217,6 +217,7 @@
    <addaction name="actionRefresh"/>
    <addaction name="separator"/>
    <addaction name="actionDirect"/>
+   <addaction name="actionTest"/>
   </widget>
   <action name="actionAdd">
    <property name="enabled">
@@ -255,6 +256,11 @@
   <action name="actionAdd_by_IP">
    <property name="text">
     <string>Add by address</string>
+   </property>
+  </action>
+  <action name="actionTest">
+   <property name="text">
+    <string>Test</string>
    </property>
   </action>
  </widget>

@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actionAdd_by_IP, SIGNAL(triggered(bool)), this, SLOT(addServerByIP()));
     connect(actionDelete, SIGNAL(triggered(bool)), this, SLOT(deleteServer()));
     connect(actionDirect, SIGNAL(triggered(bool)), this, SLOT(directConnect()));
+    connect(actionTest, SIGNAL(triggered(bool)), this, SLOT(testConnect()));
     connect(actionRefresh, SIGNAL(triggered(bool)), queryHelper, SLOT(refresh()));
     connect(actionPlay, SIGNAL(triggered(bool)), this, SLOT(play()));
     connect(tblServerBrowser, SIGNAL(clicked(QModelIndex)), this, SLOT(serverSelected()));
@@ -183,6 +184,14 @@ void MainWindow::serverSelected()
         actionAdd->setEnabled(true);
     if (tabWidget->currentIndex() == 1)
         actionDelete->setEnabled(true);
+}
+
+void MainWindow::testConnect()
+{
+    QStringList arguments;
+    arguments.append(QLatin1String("--connect=127.0.0.1:25565"));
+    if (mGameInvoker->startProcess(QLatin1String("tes3mp"), arguments, true))
+        return qApp->quit();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
