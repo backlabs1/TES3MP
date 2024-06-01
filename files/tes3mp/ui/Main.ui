@@ -215,6 +215,8 @@
    <addaction name="actionPlay"/>
    <addaction name="separator"/>
    <addaction name="actionRefresh"/>
+   <addaction name="separator"/>
+   <addaction name="actionDirect"/>
   </widget>
   <action name="actionAdd">
    <property name="enabled">
@@ -230,6 +232,11 @@
    </property>
    <property name="text">
     <string>Delete</string>
+   </property>
+  </action>
+  <action name="actionDirect">
+   <property name="text">
+    <string>Direct Connect</string>
    </property>
   </action>
   <action name="actionRefresh">

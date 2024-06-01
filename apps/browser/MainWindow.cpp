@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actionAdd, SIGNAL(triggered(bool)), this, SLOT(addServer()));
     connect(actionAdd_by_IP, SIGNAL(triggered(bool)), this, SLOT(addServerByIP()));
     connect(actionDelete, SIGNAL(triggered(bool)), this, SLOT(deleteServer()));
+    connect(actionDirect, SIGNAL(triggered(bool)), this, SLOT(directConnect()));
     connect(actionRefresh, SIGNAL(triggered(bool)), queryHelper, SLOT(refresh()));
     connect(actionPlay, SIGNAL(triggered(bool)), this, SLOT(play()));
     connect(tblServerBrowser, SIGNAL(clicked(QModelIndex)), this, SLOT(serverSelected()));
@@ -108,6 +109,19 @@ void MainWindow::deleteServer()
             actionPlay->setEnabled(false);
             actionDelete->setEnabled(false);
         }
+    }
+}
+
+void MainWindow::directConnect()
+{
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("Connect by address (address:port)"), tr("Address:"), QLineEdit::Normal, "", &ok);
+    if (ok && !text.isEmpty())
+    {
+        QStringList arguments;
+        arguments.append(QLatin1String("--connect=") + text);
+        if (mGameInvoker->startProcess(QLatin1String("tes3mp"), arguments, true))
+            return qApp->quit();
     }
 }
 

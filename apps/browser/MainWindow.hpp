@@ -23,6 +23,7 @@ protected slots:
     void addServer();
     void addServerByIP();
     void deleteServer();
+    void directConnect();
     void play();
     void serverSelected();
     void notFullSwitch(bool state);
