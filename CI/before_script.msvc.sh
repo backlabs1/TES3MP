@@ -584,6 +584,17 @@ if [ -z $SKIP_DOWNLOAD ]; then
 			git clone -b release-1.10.0 https://github.com/google/googletest.git
 		fi
 	fi
+
+	# RakNet/CrabNet
+	echo "RakNet/CrabNet 19e66190e8 ..."
+	if [[ -d CrabNet ]]; then
+		echo "  directory exists, skipping."
+	else
+		git clone https://github.com/TES3MP/CrabNet.git
+		cd CrabNet
+		git reset --hard 19e66190e83f53bcdcbcd6513238ed2e54878a21
+		cd ..
+	fi
 fi
 
 cd .. #/..
@@ -987,6 +998,29 @@ if [ ! -z $TEST_FRAMEWORK ]; then
 	echo Done.
 
 fi
+cd $DEPS
+echo
+# RakNet/CrabNet
+printf "RakNet/CrabNet... "
+{
+	if [[ -d $DEPS_INSTALL/CrabNet ]]; then
+		echo "already built"
+	else
+		cd CrabNet/
+		rm -rf build
+		mkdir build
+		cd build/
+		cmake -DCMAKE_BUILD_TYPE=Release ..
+		cmake --build . --target RakNetLibStatic --config Release \
+			--clean-first -- -maxcpucount
+		cd ../..
+		cp -r CrabNet/ $DEPS_INSTALL
+		echo Done.
+	fi
+	add_cmake_opts -DRakNet_INCLUDES=$DEPS_INSTALL/CrabNet/include
+	add_cmake_opts -DRakNet_LIBRARY_RELEASE=$DEPS_INSTALL/CrabNet/build/lib/Release/RakNetLibStatic.lib
+	add_cmake_opts -DRakNet_LIBRARY_DEBUG=$DEPS_INSTALL/CrabNet/build/lib/Release/RakNetLibStatic.lib
+}
 
 echo
 cd $DEPS_INSTALL/..
