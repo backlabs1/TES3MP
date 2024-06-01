@@ -73,6 +73,17 @@ once, you should be able run the application normally.
 Run the server (on Intel-based hardware) with
 `/Applications/TES3MP.app/Contents/MacOS/tes3mp-server`.
 
+## Building on Windows
+
+Follow these steps to build TES3MP on Windows.
+
+- Open **Windows PowerShell** as Administrator and run `Set-ExecutionPolicy
+  -ExecutionPolicy Bypass -Force`. **WARNING: This will allow PowerShell
+  scripts to be executed on the system.**
+- Right-click on `CI\windows-build.ps1` and click **Run with PowerShell**. The
+  script will ask for Administrator privileges. **WARNING: This script will
+  install Chocolatey and use it to install dependencies.**
+
 ## Credits and licenses
 
 This project exists thanks to many people who have contributed to both OpenMW
