@@ -29,6 +29,10 @@ std::string loadSettings (Settings::Manager & settings)
 
 int main(int argc, char *argv[])
 {
+#ifdef __APPLE__
+boost::filesystem::path binary_path = boost::filesystem::system_complete(boost::filesystem::path(argv[0]));
+boost::filesystem::current_path(binary_path.parent_path());
+#endif
     Settings::Manager mgr;
 
     loadSettings(mgr);

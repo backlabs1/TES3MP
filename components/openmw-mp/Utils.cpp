@@ -25,7 +25,7 @@ std::string Utils::convertPath(std::string str)
 #if defined(_WIN32)
 #define _SEP_ '\\'
 #elif defined(__APPLE__)
-#define _SEP_ ':'
+#define _SEP_ '/'
 #endif
 
 #if defined(_WIN32) || defined(__APPLE__)
