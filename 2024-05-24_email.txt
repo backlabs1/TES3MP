@@ -1,0 +1,64 @@
+Date: Fri, 24 May 2024 18:44:14 +0000
+To: psi29a, Marc Zinnschlag (zinnschlag), AnyOldName3,
+ Anton Uramer (uramer), Chris Robinson (chriskcat),
+ Pieter van der Kloet (pvdk), jvoisin
+From: backlabs1
+Subject: Re: Problems with an OpenMW GitLab group owner
+
+Hi all,
+
+I was happy to learn that David Cernat agreed to resolve the licensing
+concern by simply reverting the TES3MP license change with permission
+from the other contributors.
+
+As stated by Bret/psi29a in reply to this group on 2024-04-19:
+
+> x xxxxx xxx xxxxxx xx xxxxxxxxxx xxx xxxx xxxx xx xxxx xxxxx xxxxxxx
+> xxxx xxxxxx xxxx
+> x xxxxx xxxx xxxxx xxx xx xxx xxxxxxxxxxxx xx xxx xxxxx xxxxxxxxxx xx
+> xxxx xxxxxxxxx
+
+And as stated by Bret/psi29a in the issue #7937 description [1]:
+
+> David has apologized and is willing to revert the commits that changed
+> the licensing of TES3MP as the threat of a hostile fork from 2018 has
+> long since passed.
+
+And as indicated by the changes David Cernat authored and pushed to
+TES3MP branches `0.8.1` [2] and `0.8.1-vr` [3], with commits
+90a53334853ca103e13a9f42b0016816d807a844 [4] and
+2344ac1c7a2a0f31c753dcc47c6e35bebfe288f3 [5], respectively, with this
+commit message:
+
+> Use regular GPLv3 license without additional terms.
+>
+> This change has been made with the explicit permission of the
+> following people who contributed code after the additional terms had
+> been added: GrimKriegor, nalal, madsbuvi, sidke, magicaldave,
+> HotaruBlaze, trofi.
+
+(You can also see these commits on my TES3MP fork on GitHub [6].)
+
+But then on approximately 2024-05-14, the `0.8.1` [7] and `0.8.1-vr` [8]
+branches were force-pushed without those two commits.
+
+Please, what is actually going on here?
+
+Thanks,
+backlabs1
+
+[1]:
+https://web.archive.org/web/20240421211013/https://gitlab.com/OpenMW/openmw/-/issues/7937
+[2]:
+https://web.archive.org/web/20240513232120/https://github.com/TES3MP/TES3MP/commits/0.8.1/
+[3]:
+https://web.archive.org/web/20240513232115/https://github.com/TES3MP/TES3MP/commits/0.8.1-vr/
+[4]:
+https://web.archive.org/web/20240513214930/https://github.com/TES3MP/TES3MP/commit/90a53334853ca103e13a9f42b0016816d807a844
+[5]:
+https://web.archive.org/web/20240513232200/https://github.com/TES3MP/TES3MP/commit/2344ac1c7a2a0f31c753dcc47c6e35bebfe288f3
+[6]: https://github.com/backlabs1/TES3MP
+[7]:
+https://web.archive.org/web/20240514164933/https://github.com/TES3MP/TES3MP/commits/0.8.1/
+[8]:
+https://web.archive.org/web/20240514165413/https://github.com/TES3MP/TES3MP/commits/0.8.1-vr/

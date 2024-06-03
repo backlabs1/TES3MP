@@ -1,0 +1,78 @@
+Date: Thu, 18 Apr 2024 22:42:47 +0000
+To: psi29a, Marc Zinnschlag (zinnschlag), AnyOldName3,
+ Anton Uramer (uramer), Chris Robinson (chriskcat),
+ Pieter van der Kloet (pvdk), jvoisin
+From: backlabs1
+Subject: Problems with an OpenMW GitLab group owner
+
+Hi all,
+
+I am sending this message about a problem with an OpenMW group owner.
+You are included in the recipients because you are listed as either an
+owner or a maintainer in the OpenMW group on GitLab [1].
+
+On 2021-04-18, TES3MP commits f6887559f6 [2] and cf4ff3513f [3] changed
+the TES3MP license from the standard GPLv3 used by OpenMW to a GPLv3
+license with section 7 [4] additional restrictions. It is not legal to
+re-license code without permission from all copyright holders, which
+includes OpenMW contributors and TES3MP contributors up to the point of
+the license change, and code merged in from OpenMW after the license change.
+
+In the last few months, I have started working on TES3MP, hoping to
+contribute to both TES3MP and OpenMW. (I have a TES3MP fork hosted on
+Codeberg [5] where I hoped to try out larger changes than I expected to
+be readily merged to TES3MP.) I opened three TES3MP pull requests that
+were accepted by David Cernat. At some point during this time, I noticed
+that the TES3MP license was not the same as the OpenMW license.
+
+On 2024-04-12, I opened a TES3MP issue about this, hoping it was a
+misunderstanding that could be easily resolved, but after some
+discussion the issue was abruptly deleted. You can see all the comments,
+which include some additional details, on archive.org [6]. Also, the
+three merge requests of mine (that were previously accepted and merged)
+were discarded and the default branch force-pushed without them. You can
+see the missing commits and changes here [7].
+
+On 2024-04-17, I opened an OpenMW issue about this, not realizing that
+the developer also has owner permissions on the OpenMW GitLab project.
+After a small amount of discussion, and about 14 hours after it was
+opened, that issue too was deleted. You can see the issue, missing the
+comments, on archive.org [8]. (I have all the missing comments as email
+messages; AnyOldName3 and Chris Robinson may have some of them too,
+having commented there.)
+
+Later on 2024-04-17, I opened a Dreamweave-MP issue [9] because the
+licensing problem also exists on that TES3MP fork, it was a public space
+where David Cernat probably does not have permission to delete content,
+and I prefer to keep all discussion public. However, I realize now that
+I could jeopardize the entire OpenMW project by continuing the
+discussion publicly: since David Cernat is an owner in the OpenMW GitLab
+group [1], he may have permission to delete entire repositories. He may
+also have access to other OpenMW infrastructure. He has already deleted
+two discussions and discarded three previously-accepted merge requests.
+Perhaps there have already been other incidents in the past.
+
+So as a random contributor who had his work discarded but wants to see
+OpenMW and TES3MP succeed, I ask two questions:
+
+- Is anyone keeping current backups of OpenMW infrastructure, including
+all the GitLab project data?
+- What can I do to help resolve this problem?
+
+Thanks,
+backlabs1
+
+[1]: <https://gitlab.com/groups/OpenMW/-/group_members>
+[2]:
+<https://github.com/TES3MP/TES3MP/commit/f6887559f6baa2aa94847ee8341045ffeffdac8f>
+[3]:
+<https://github.com/TES3MP/TES3MP/commit/cf4ff3513f25574c6c79377c09fe72e95c2ee069>
+[4]: <https://www.gnu.org/licenses/gpl-3.0.en.html#section7>
+[5]: <https://codeberg.org/backlabs1/TES3MP/>
+[6]:
+<https://web.archive.org/web/20240417051934/https://github.com/TES3MP/TES3MP/issues/685>
+[7]:
+<https://github.com/TES3MP/TES3MP/compare/49be5b6405d6ab427e06ed350cf76c715a1f3bdd...backlabs1:TES3MP:tes3mp-0.8.1-snapshot>
+[8]:
+<http://web.archive.org/web/20240418043925/https://gitlab.com/OpenMW/openmw/-/issues/7935>
+[9]: <https://github.com/DreamWeave-MP/Dreamweave/issues/89>
