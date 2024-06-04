@@ -117,8 +117,9 @@ Among others, find the following branches in this repository:
   time had either an "Owner" or a "Maintainer" role, excluding David Cernat:
   psi29a, Marc Zinnschlag (@zinnschlag), AnyOldName3, Anton Uramer (@uramer),
   Chris Robinson (@chriskcat), Pieter van der Kloet (@pvdk), and @jvoisin. See
-  [2024-04-18_email.txt](2024-04-18_email.txt). From that date to 2024-05-10,
-  backlabs1 received a total of five replies from three of the recipients.
+  [2024-04-18_backlabs1-email.txt](2024-04-18_backlabs1-email.txt). From that
+  date to 2024-05-10, backlabs1 received a total of five replies from three of
+  the recipients.
 - 2024-04-19: David Cernat was removed from the [GitLab OpenMW
   group](https://gitlab.com/groups/OpenMW/-/group_members)
   ([archive](https://web.archive.org/web/20240513233448/https://gitlab.com/groups/OpenMW/-/group_members)).
@@ -156,8 +157,9 @@ Among others, find the following branches in this repository:
   commits](https://web.archive.org/web/20240514165413/https://github.com/TES3MP/TES3MP/commits/0.8.1-vr/),
   in both of which the license change revert commit is now missing.
 - 2024-05-24: backlabs1 sent a private message to the same recipients as the
-  message on 2024-04-18. See [2024-05-24_email.txt](2024-05-24_email.txt) (one
-  quote from a private reply is redacted).
+  message on 2024-04-18. See
+  [2024-05-24_backlabs1-email.txt](2024-05-24_backlabs1-email.txt) (one quote
+  from a private reply is redacted).
 - 2024-06-02: To this date, there has been no update from [Bradley
   M. Kuhn](https://ebb.org/bkuhn/) on [OpenMW issue
   #7937](https://gitlab.com/OpenMW/openmw/-/issues/7937)
