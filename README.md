@@ -29,6 +29,8 @@ Among others, find the following branches in this repository:
 - `dreamweave-legacy-master-snapshot`: snapshot of legacy Dreamweave which was
   based on TES3MP
 - `master`: TES3MP contributions by backlabs1
+- `tes3mp-0.8.1-snapshot1`: snapshot of TES3MP `0.8.1` branch showing three
+  contributions by backlabs1 before they were discarded
 
 ## Timeline
 
