@@ -29,15 +29,15 @@ issues or pull requests for changes to those branches.**
 
 Find the following branches in this repository:
 
-- `about`: some history about upstream TES3MP
-- `tes3mp-0.8.1-snapshot2`: snapshot of TES3MP `0.8.1` branch in which the
+- **about**: some history about upstream TES3MP
+- **tes3mp-0.8.1-snapshot2**: snapshot of TES3MP `0.8.1` branch in which the
   license change was reverted with permission from contributors
-- `tes3mp-0.8.1-vr-snapshot2`: snapshot of TES3MP `0.8.1-vr` branch in which
+- **tes3mp-0.8.1-vr-snapshot2**: snapshot of TES3MP `0.8.1-vr` branch in which
   the license change reverted with permission from contributors
-- `dreamweave-legacy-master-snapshot`: snapshot of legacy Dreamweave which was
-  based on TES3MP
-- `master`: TES3MP contributions by backlabs1
-- `tes3mp-0.8.1-snapshot1`: snapshot of TES3MP `0.8.1` branch showing three
+- **dreamweave-legacy-master-snapshot**: snapshot of legacy Dreamweave which
+  was based on TES3MP
+- **master**: TES3MP contributions by backlabs1
+- **tes3mp-0.8.1-snapshot1**: snapshot of TES3MP `0.8.1` branch showing three
   contributions by backlabs1 before they were discarded
 
 ## Timeline
