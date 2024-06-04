@@ -3,6 +3,14 @@
 **If you are interested in current OpenMW multiplayer development, please see
 [Dreamweave-MP](https://gitlab.com/dreamweave-mp).**
 
+**Please open an issue or pull request if you are interested in contributing
+to the documentation about TES3MP history in the "about" branch or want to
+fork TES3MP for development under a new name (note, working on Dreamweave-MP
+instead is recommended).**
+
+**Branches other than the "about" branch are archives. Please do not open any
+issues or pull requests for changes to those branches.**
+
 ## Purpose
 
 - To collect some history about upstream TES3MP in case it may be useful to
