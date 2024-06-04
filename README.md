@@ -89,15 +89,23 @@ Among others, find the following branches in this repository:
 - 2024-04-17: backlabs1 opened [OpenMW issue
   #7935](https://gitlab.com/OpenMW/openmw/-/issues/7935)
   ([archive](http://web.archive.org/web/20240418043925/https://gitlab.com/OpenMW/openmw/-/issues/7935)
-  or see `2024-04-17_7935_0_backlabs1.md`). In the next approximately 14
-  hours, the following comments and actions were posted publicly:
-  - AnyOldName3 (see `2024-04-17_7935_1-1_AnyOldName3.md`)
-    - backlabs1 (see `2024-04-17_7935_1-2_backlabs1.md`)
-  - backlabs1 (see `2024-04-17_7935_2_backlabs1.md`)
-  - backlabs1 (see `2024-04-17_7935_3_backlabs1.md`)
-  - David Cernat (see `2024-04-17_7935_4-1_David-Cernat.md`)
-    - Chris Robinson (see `2024-04-17_7935_4-2_Chris-Robinson.md`)
-      - David Cernat (see `2024-04-17_7935_4-3_David-Cernat.md`)
+  or see [2024-04-17_7935_0_backlabs1.md](2024-04-17_7935_0_backlabs1.md)). In
+  the next approximately 14 hours, the following comments and actions were
+  posted publicly:
+  - AnyOldName3 (see
+    [2024-04-17_7935_1-1_AnyOldName3.md](2024-04-17_7935_1-1_AnyOldName3.md))
+    - backlabs1 (see
+      [2024-04-17_7935_1-2_backlabs1.md](2024-04-17_7935_1-2_backlabs1.md))
+  - backlabs1 (see
+    [2024-04-17_7935_2_backlabs1.md](2024-04-17_7935_2_backlabs1.md))
+  - backlabs1 (see
+    [2024-04-17_7935_3_backlabs1.md](2024-04-17_7935_3_backlabs1.md))
+  - David Cernat (see
+    [2024-04-17_7935_4-1_David-Cernat.md](2024-04-17_7935_4-1_David-Cernat.md))
+    - Chris Robinson (see
+      [2024-04-17_7935_4-2_Chris-Robinson.md](2024-04-17_7935_4-2_Chris-Robinson.md))
+      - David Cernat (see
+        [2024-04-17_7935_4-3_David-Cernat.md](2024-04-17_7935_4-3_David-Cernat.md))
   - "Issue was closed by David Cernat" notification dated 2024-04-18 07:47:10
     UTC
   - "Issue was reopened by uramer" notification dated 2024-04-18 13:15:27 UTC
@@ -109,8 +117,8 @@ Among others, find the following branches in this repository:
   time had either an "Owner" or a "Maintainer" role, excluding David Cernat:
   psi29a, Marc Zinnschlag (@zinnschlag), AnyOldName3, Anton Uramer (@uramer),
   Chris Robinson (@chriskcat), Pieter van der Kloet (@pvdk), and @jvoisin. See
-  `2024-04-18_email.txt`. From that date to 2024-05-10, backlabs1 received a
-  total of five replies from three of the recipients.
+  [2024-04-18_email.txt](2024-04-18_email.txt). From that date to 2024-05-10,
+  backlabs1 received a total of five replies from three of the recipients.
 - 2024-04-19: David Cernat was removed from the [GitLab OpenMW
   group](https://gitlab.com/groups/OpenMW/-/group_members)
   ([archive](https://web.archive.org/web/20240513233448/https://gitlab.com/groups/OpenMW/-/group_members)).
@@ -148,8 +156,8 @@ Among others, find the following branches in this repository:
   commits](https://web.archive.org/web/20240514165413/https://github.com/TES3MP/TES3MP/commits/0.8.1-vr/),
   in both of which the license change revert commit is now missing.
 - 2024-05-24: backlabs1 sent a private message to the same recipients as the
-  message on 2024-04-18. See `2024-05-24_email.txt` (one quote from a private
-  reply is redacted).
+  message on 2024-04-18. See [2024-05-24_email.txt](2024-05-24_email.txt) (one
+  quote from a private reply is redacted).
 - 2024-06-02: To this date, there has been no update from [Bradley
   M. Kuhn](https://ebb.org/bkuhn/) on [OpenMW issue
   #7937](https://gitlab.com/OpenMW/openmw/-/issues/7937)
