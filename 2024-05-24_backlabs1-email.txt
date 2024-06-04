@@ -13,10 +13,10 @@ from the other contributors.
 
 As stated by Bret/psi29a in reply to this group on 2024-04-19:
 
-> x xxxxx xxx xxxxxx xx xxxxxxxxxx xxx xxxx xxxx xx xxxx xxxxx xxxxxxx
-> xxxx xxxxxx xxxx
-> x xxxxx xxxx xxxxx xxx xx xxx xxxxxxxxxxxx xx xxx xxxxx xxxxxxxxxx xx
-> xxxx xxxxxxxxx
+> █ █████ ███ ██████ ██ ██████████ ███ ████ ████ ██ ████ █████ ███████
+> ████ ██████ ████
+> █ █████ ████ █████ ███ ██ ███ ████████████ ██ ███ █████ ██████████ ██
+> ████ █████████
 
 And as stated by Bret/psi29a in the issue #7937 description [1]:
 
