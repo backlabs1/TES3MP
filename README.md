@@ -27,7 +27,7 @@ issues or pull requests for changes to those branches.**
 
 ## Branches
 
-Among others, find the following branches in this repository:
+Find the following branches in this repository:
 
 - `about`: some history about upstream TES3MP
 - `tes3mp-0.8.1-snapshot2`: snapshot of TES3MP `0.8.1` branch in which the
