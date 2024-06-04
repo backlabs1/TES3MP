@@ -75,8 +75,7 @@ Among others, find the following branches in this repository:
   and [#683](https://github.com/TES3MP/TES3MP/pull/683)
   ([archived](https://web.archive.org/web/20240516040548/https://github.com/TES3MP/TES3MP/pull/683)). The
   first three of those can be found merged by David Cernat in the
-  backlabs1/TES3MP [tes3mp-0.8.1-snapshot
-  branch](https://github.com/backlabs1/TES3MP/commits/tes3mp-0.8.1-snapshot/)
+  `tes3mp-0.8.1-snapshot` branch
   ([archived](https://web.archive.org/web/20240513235608/https://github.com/backlabs1/TES3MP/commits/tes3mp-0.8.1-snapshot/)).
 - 2024-04-12: backlabs1 opened [TES3MP issue
   #685](https://github.com/TES3MP/TES3MP/issues/685)
