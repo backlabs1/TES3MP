@@ -1,7 +1,7 @@
 # TES3MP
 
-**If you are interested in current OpenMW multiplayer development, please see
-[Dreamweave-MP](https://gitlab.com/dreamweave-mp).**
+**If you are interested in the next generation of OpenMW multiplayer
+development, please see [Dreamweave-MP](https://gitlab.com/dreamweave-mp).**
 
 **Please open an issue or pull request if you are interested in contributing
 to the documentation about TES3MP history in the "about" branch or want to
