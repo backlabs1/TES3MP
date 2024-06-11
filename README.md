@@ -25,6 +25,43 @@ issues or pull requests for changes to those branches.**
 - To archive the legacy Dreamweave fork of TES3MP which has discarded in favor
   of a new OpenMW fork
 
+## Commentary by backlabs1
+
+- David Cernat censored community discussion about a licensing question by
+  deleting [TES3MP issue #685](https://github.com/TES3MP/TES3MP/issues/685)
+  ([archived](https://web.archive.org/web/20240417051934/https://github.com/TES3MP/TES3MP/issues/685))
+  and then deleting [OpenMW issue
+#7935](https://gitlab.com/OpenMW/openmw/-/issues/7935)
+([archived](http://web.archive.org/web/20240418043925/https://gitlab.com/OpenMW/openmw/-/issues/7935)).
+- In further retaliation, he also discarded four unrelated merge requests by
+  backlabs1 that he had previously accepted and merged, without any
+  explanation, force-pushing to the default `0.8.1` branch without them:
+  [#675](https://github.com/TES3MP/TES3MP/pull/675)
+  ([archived](https://web.archive.org/web/20240516040841/https://github.com/TES3MP/TES3MP/pull/675)),
+  [#676](https://github.com/TES3MP/TES3MP/pull/676)
+  ([archived](https://web.archive.org/web/20240516040606/https://github.com/TES3MP/TES3MP/pull/676)),
+  [#677](https://github.com/TES3MP/TES3MP/pull/677)
+  ([archived](https://web.archive.org/web/20240516040557/https://github.com/TES3MP/TES3MP/pull/677)),
+  and [#683](https://github.com/TES3MP/TES3MP/pull/683)
+  ([archived](https://web.archive.org/web/20240516040548/https://github.com/TES3MP/TES3MP/pull/683)).
+- According to psi29a in [OpenMW issue
+  #7937](https://gitlab.com/OpenMW/openmw/-/issues/7937)
+  ([archived](https://web.archive.org/web/20240421211013/https://gitlab.com/OpenMW/openmw/-/issues/7937)),
+  he agreed to revert the licensing changes. About 20 days later, he authored
+  and pushed commits that did so:
+  [90a5333485](https://web.archive.org/web/20240513214930/https://github.com/TES3MP/TES3MP/commit/90a53334853ca103e13a9f42b0016816d807a844)
+  (on the default `0.8.1` branch) and
+  [2344ac1c7a](https://web.archive.org/web/20240513232200/https://github.com/TES3MP/TES3MP/commit/2344ac1c7a2a0f31c753dcc47c6e35bebfe288f3)
+  (on the `0.8.1-vr` branch); see also the archived [0.8.1
+  commits](https://web.archive.org/web/20240513232120/https://github.com/TES3MP/TES3MP/commits/0.8.1/)
+  and [0.8.1-vr
+  commits](https://web.archive.org/web/20240513232115/https://github.com/TES3MP/TES3MP/commits/0.8.1-vr/). Then
+  about four days after that he removed those commits and force-pushed to the
+  two branches without them; see the archived [0.8.1
+  commits](https://web.archive.org/web/20240514164933/https://github.com/TES3MP/TES3MP/commits/0.8.1/)
+  and the [0.8.1-vr
+  commits](https://web.archive.org/web/20240514165413/https://github.com/TES3MP/TES3MP/commits/0.8.1-vr/).
+
 ## Branches
 
 Find the following branches in this repository:
