@@ -27,8 +27,9 @@ issues or pull requests for changes to those branches.**
 
 ## Commentary by backlabs1
 
-- David Cernat censored community discussion about a licensing question by
-  deleting [TES3MP issue #685](https://github.com/TES3MP/TES3MP/issues/685)
+- The main TES3MP developer censored community discussion about a licensing
+  question by deleting [TES3MP issue
+  #685](https://github.com/TES3MP/TES3MP/issues/685)
   ([archived](https://web.archive.org/web/20240417051934/https://github.com/TES3MP/TES3MP/issues/685))
   and then deleting [OpenMW issue
 #7935](https://gitlab.com/OpenMW/openmw/-/issues/7935)
