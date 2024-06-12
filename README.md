@@ -1,12 +1,11 @@
 # TES3MP
 
-**If you are interested in the next generation of OpenMW multiplayer
-development, please see [Dreamweave-MP](https://gitlab.com/dreamweave-mp).**
+**If you are interested in OpenMW multiplayer development, please see the
+[Other OpenMW multiplayer forks](#other-openmw-multiplayer-forks) section
+below.**
 
 **Please open an issue or pull request if you are interested in contributing
-to the documentation about TES3MP history in the "about" branch or want to
-fork TES3MP for development under a new name (note, working on Dreamweave-MP
-instead is recommended).**
+to the documentation about TES3MP history in the "about" branch.**
 
 **Branches other than the "about" branch are archives. Please do not open any
 issues or pull requests for changes to those branches.**
@@ -212,6 +211,14 @@ Find the following branches in this repository:
   #7937](https://gitlab.com/OpenMW/openmw/-/issues/7937)
   ([archive](https://web.archive.org/web/20240603043956/https://gitlab.com/OpenMW/openmw/-/issues/7937))
   and no reply to the message on 2024-05-24.
+
+## Other OpenMW multiplayer forks
+
+This is a list of known OpenMW forks focused on multiplayer functionality,
+aside from the [TES3MP](https://github.com/TES3MP/TES3MP) project which this
+document is about.
+
+- [Dreamweave-MP](https://gitlab.com/dreamweave-mp)
 
 ## About backlabs1
 
