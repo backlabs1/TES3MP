@@ -12,19 +12,19 @@ issues or pull requests for changes to those branches.**
 
 ## Purpose
 
+Why this repository is here:
+
 - To collect some history about upstream TES3MP in case it may be useful to
-  the OpenMW community
-- To illustrate one small part of why some members of the OpenMW community
-  have abandoned TES3MP
-- To archive some contributions that were accepted and then discarded by
-  upstream TES3MP (apparently as retaliation) by force-pushing the default
-  `0.8.1` branch without the changes
-- To archive some contributions that were not submitted at all due to previous
-  contributions being discarded without any reason given
-- To archive the legacy Dreamweave fork of TES3MP which has discarded in favor
+  the OpenMW community or anyone wanting to contribute to TES3MP
+- To archive some contributions that were accepted and then later discarded by
+  upstream TES3MP in retaliation
+- To archive some later contributions that were not submitted upstream at all
+- To archive the legacy Dreamweave fork of TES3MP which was discarded in favor
   of a new OpenMW fork
 
 ## Commentary by backlabs1
+
+Or, "Why I was not able to contribute to TES3MP."
 
 - The main TES3MP developer censored community discussion about a licensing
   question by deleting [TES3MP issue
