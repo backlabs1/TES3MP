@@ -71,7 +71,7 @@ Find the following branches in this repository:
 - **tes3mp-0.8.1-snapshot2**: snapshot of TES3MP `0.8.1` branch in which the
   license change was reverted with permission from contributors
 - **tes3mp-0.8.1-vr-snapshot2**: snapshot of TES3MP `0.8.1-vr` branch in which
-  the license change reverted with permission from contributors
+  the license change was reverted with permission from contributors
 - **dreamweave-legacy-master-snapshot**: snapshot of legacy Dreamweave which
   was based on TES3MP
 - **master**: TES3MP contributions by backlabs1
