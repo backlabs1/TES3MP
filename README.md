@@ -224,7 +224,7 @@ document is about.
 
 I am just an insignificant past contributor to a few OpenMW- and
 TES3MP-related projects; here are some my patches that were accepted and
-merged:
+merged, in addition to the last 21 commits in the "master" branch:
 
 - hirstoast/tes3mp-mmar commit
   [f48090e49b](https://github.com/hristoast/tes3mp-mmar/commit/f48090e49b52f19b46552cba89643eba7524ee96)
