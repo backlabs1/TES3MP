@@ -213,6 +213,43 @@ Find the following branches in this repository:
   ([archive](https://web.archive.org/web/20240603043956/https://gitlab.com/OpenMW/openmw/-/issues/7937))
   and no reply to the message on 2024-05-24.
 
+## About backlabs1
+
+I am just an insignificant past contributor to a few OpenMW- and
+TES3MP-related projects; here are some my patches that were accepted and
+merged:
+
+- hirstoast/tes3mp-mmar commit
+  [f48090e49b](https://github.com/hristoast/tes3mp-mmar/commit/f48090e49b52f19b46552cba89643eba7524ee96)
+  ([archived](https://web.archive.org/web/20240611224010/https://github.com/hristoast/tes3mp-mmar/commit/f48090e49b52f19b46552cba89643eba7524ee96))
+- portmod/openmw-mods commit
+  [a2b8cc6d05](https://gitlab.com/portmod/openmw-mods/-/commit/a2b8cc6d05d1d94cb30b86a47b1750a4f5e28a0f)
+  ([archived](https://web.archive.org/web/20240611225255/https://gitlab.com/portmod/openmw-mods/-/commit/a2b8cc6d05d1d94cb30b86a47b1750a4f5e28a0f))
+- samkaufman/tes3mp-mac-pkg commits
+  [a125086247](https://github.com/samkaufman/tes3mp-mac-pkg/commit/a125086247c53355fb65a897c96d304fdddd9c7c)
+  ([archived](https://web.archive.org/web/20240611224405/https://github.com/samkaufman/tes3mp-mac-pkg/commit/a125086247c53355fb65a897c96d304fdddd9c7c)),
+  [dca9ff3182](https://github.com/samkaufman/tes3mp-mac-pkg/commit/dca9ff31827d66642bfe517dbd9b5b178b599716)
+  ([archived](https://web.archive.org/web/20240611224517/https://github.com/samkaufman/tes3mp-mac-pkg/commit/dca9ff31827d66642bfe517dbd9b5b178b599716)),
+  [35be65622f](https://github.com/samkaufman/tes3mp-mac-pkg/commit/35be65622fe54ca9f7b6b275abc66b42f85638d4)
+  ([archived](https://web.archive.org/web/20240611224620/https://github.com/samkaufman/tes3mp-mac-pkg/commit/35be65622fe54ca9f7b6b275abc66b42f85638d4)),
+  [0479045a19](https://github.com/samkaufman/tes3mp-mac-pkg/commit/0479045a19f2a73a27ff8c0b628af136cd72a8e4)
+  ([archived](https://web.archive.org/web/20240611224729/https://github.com/samkaufman/tes3mp-mac-pkg/commit/0479045a19f2a73a27ff8c0b628af136cd72a8e4)),
+  [7be23e1f16](https://github.com/samkaufman/tes3mp-mac-pkg/commit/7be23e1f16f27c350e341360f234d1d08e9d561c)
+  ([archived](https://web.archive.org/web/20240611224838/https://github.com/samkaufman/tes3mp-mac-pkg/commit/7be23e1f16f27c350e341360f234d1d08e9d561c)),
+  and
+  [dcaac7471c](https://github.com/samkaufman/tes3mp-mac-pkg/commit/dcaac7471c35cf5f00c0fe4b08e9dd335121b52f)
+  ([archived](https://web.archive.org/web/20240611224942/https://github.com/samkaufman/tes3mp-mac-pkg/commit/dcaac7471c35cf5f00c0fe4b08e9dd335121b52f))
+- TES3MP/TES3MP pull requests
+  [#675](https://github.com/TES3MP/TES3MP/pull/675)
+  ([archived](https://web.archive.org/web/20240516040841/https://github.com/TES3MP/TES3MP/pull/675)),
+  [#676](https://github.com/TES3MP/TES3MP/pull/676)
+  ([archived](https://web.archive.org/web/20240516040606/https://github.com/TES3MP/TES3MP/pull/676)),
+  [#677](https://github.com/TES3MP/TES3MP/pull/677)
+  ([archived](https://web.archive.org/web/20240516040557/https://github.com/TES3MP/TES3MP/pull/677)),
+  and [#683](https://github.com/TES3MP/TES3MP/pull/683)
+  ([archived](https://web.archive.org/web/20240516040548/https://github.com/TES3MP/TES3MP/pull/683))—These
+  changes were later discarded as described above.
+
 ## Legal
 
 Copyright 2024 backlabs1. [Creative Commons
