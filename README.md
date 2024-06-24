@@ -10,8 +10,6 @@ to the documentation about TES3MP history in the "about" branch.**
 **Branches other than the "about" branch are archives. Please do not open any
 issues or pull requests for changes to those branches.**
 
-## Purpose
-
 Why this repository is here:
 
 - To collect some history about upstream TES3MP in case it may be useful to
@@ -22,9 +20,9 @@ Why this repository is here:
 - To archive the legacy Dreamweave fork of TES3MP which was discarded in favor
   of a new OpenMW fork
 
-## Commentary by backlabs1
+## Statement by backlabs1
 
-Or, "Why I was not able to contribute to TES3MP."
+Why I was not able to contribute to TES3MP:
 
 - The main TES3MP developer censored community discussion about a licensing
   question by deleting [TES3MP issue
