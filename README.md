@@ -206,10 +206,10 @@ Find the following branches in this repository:
   message on 2024-04-18. See
   [2024-05-24_backlabs1-email.txt](2024-05-24_backlabs1-email.txt) (one quote
   from a private reply is redacted).
-- 2024-06-02: To this date, there has been no update from [Bradley
+- 2024-06-24: To this date, there has been no update from [Bradley
   M. Kuhn](https://ebb.org/bkuhn/) on [OpenMW issue
   #7937](https://gitlab.com/OpenMW/openmw/-/issues/7937)
-  ([archive](https://web.archive.org/web/20240603043956/https://gitlab.com/OpenMW/openmw/-/issues/7937))
+  ([archive](https://web.archive.org/web/20240624215506/https://gitlab.com/OpenMW/openmw/-/issues/7937))
   and no reply to the message on 2024-05-24.
 
 ## Other OpenMW multiplayer forks
