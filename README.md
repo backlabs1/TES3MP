@@ -133,23 +133,24 @@ Find the following branches in this repository:
 - 2024-04-17: backlabs1 opened [OpenMW issue
   #7935](https://gitlab.com/OpenMW/openmw/-/issues/7935)
   ([archive](http://web.archive.org/web/20240418043925/https://gitlab.com/OpenMW/openmw/-/issues/7935)
-  or see [2024-04-17_7935_0_backlabs1.md](2024-04-17_7935_0_backlabs1.md)). In
+  or see
+  [2024-04-17_7935_0_backlabs1.md](gitlab-issue-comments/2024-04-17_7935_0_backlabs1.md)). In
   the next approximately 14 hours, the following comments and actions were
   posted publicly:
   - AnyOldName3 (see
-    [2024-04-17_7935_1-1_AnyOldName3.md](2024-04-17_7935_1-1_AnyOldName3.md))
+    [2024-04-17_7935_1-1_AnyOldName3.md](gitlab-issue-comments/2024-04-17_7935_1-1_AnyOldName3.md))
     - backlabs1 (see
-      [2024-04-17_7935_1-2_backlabs1.md](2024-04-17_7935_1-2_backlabs1.md))
+      [2024-04-17_7935_1-2_backlabs1.md](gitlab-issue-comments/2024-04-17_7935_1-2_backlabs1.md))
   - backlabs1 (see
-    [2024-04-17_7935_2_backlabs1.md](2024-04-17_7935_2_backlabs1.md))
+    [2024-04-17_7935_2_backlabs1.md](gitlab-issue-comments/2024-04-17_7935_2_backlabs1.md))
   - backlabs1 (see
-    [2024-04-17_7935_3_backlabs1.md](2024-04-17_7935_3_backlabs1.md))
+    [2024-04-17_7935_3_backlabs1.md](gitlab-issue-comments/2024-04-17_7935_3_backlabs1.md))
   - David Cernat (see
-    [2024-04-17_7935_4-1_David-Cernat.md](2024-04-17_7935_4-1_David-Cernat.md))
+    [2024-04-17_7935_4-1_David-Cernat.md](gitlab-issue-comments/2024-04-17_7935_4-1_David-Cernat.md))
     - Chris Robinson (see
-      [2024-04-17_7935_4-2_Chris-Robinson.md](2024-04-17_7935_4-2_Chris-Robinson.md))
+      [2024-04-17_7935_4-2_Chris-Robinson.md](gitlab-issue-comments/2024-04-17_7935_4-2_Chris-Robinson.md))
       - David Cernat (see
-        [2024-04-17_7935_4-3_David-Cernat.md](2024-04-17_7935_4-3_David-Cernat.md))
+        [2024-04-17_7935_4-3_David-Cernat.md](gitlab-issue-comments/2024-04-17_7935_4-3_David-Cernat.md))
   - "Issue was closed by David Cernat" notification dated 2024-04-18 07:47:10
     UTC
   - "Issue was reopened by uramer" notification dated 2024-04-18 13:15:27 UTC
